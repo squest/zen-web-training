@@ -14,8 +14,10 @@
 
 (defroutes
   app-routes
-  (GET "/" [] (homepage))
-  (route/not-found "Not Found"))
+  (GET "/" []
+       (do (println "Normal service has been resumed")
+           (homepage)))
+  (route/not-found "Nothing to see here dude"))
 
 (def app
   (wrap-defaults app-routes site-defaults))
