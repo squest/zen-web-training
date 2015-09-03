@@ -11,4 +11,18 @@
 
 (defn open-edn
   [fname]
-  (slurp (str "resources/" fname)))
+  (slurp (str "resources/" fname ".csv")))
+
+(def my-data (cs/split-lines (open-edn "20152016sessions")))
+
+(defn take-all-sessions
+  [x]
+  (->> x
+       (map #(cs/split % #"\""))
+       (filter #(= 2 (count %)))
+       (map #(scratch/take-comma-from-num (second %)))))
+
+(defn take-all-sessions2
+  [x]
+  (->> (scratch/take-pair x)
+       (map #(scratch/take-comma-from-num (second %)))))
