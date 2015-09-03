@@ -17,12 +17,3 @@
        (map #(cs/split % #"\""))
        (filter #(= 2 (count %)))))
 
-(defn somfin
-  []
-  (->> (slurp "resources/20152016sessions.csv")
-       (cs/split-lines)
-       (drop 7)
-       (mapv #(cs/split % #"\""))
-       (mapv second)
-       (mapv #(cs/replace % #"," ""))
-       (mapv read-string)))
