@@ -16,7 +16,7 @@
 (def my-video-plays "videoplays20122015")
 (def my-avg-duration "avgsessionduration20122015")
 
-;;;;;; SUPPORTING FUNCTION
+;;;;;; SUPPORTING FUNCTIONS
 (defn open-edn
   [fname]
   (slurp (str "resources/" fname ".csv")))
@@ -50,6 +50,7 @@
        (* 60 (second item))
        (last item))))
 
+;;;;;; MAIN FUNCTIONS
 (defn monthly-sessions-pageviews
   [filename]
   (->> (open-edn filename)
@@ -110,4 +111,5 @@
                                              :duration (take-value % monthly-total-duration))))
          )))
 
+;;;;;; CREATING FILE
 (def spit-file (spit "./resources/assignment2.edn" (creating-set-of-data my-sessions my-pageviews my-video-plays my-avg-duration)))
