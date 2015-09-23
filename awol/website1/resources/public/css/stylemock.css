@@ -27,11 +27,12 @@ body {
   font-size: 0.87rem;
   font-weight: normal;
   line-height: 1.3;
-   margin-bottom: 0.25rem;}
+  margin-bottom: 0.25rem;
+  color: #202026;}
 
 .deschead {
     padding-bottom: 7px;
-    color: #9C9223;
+    color: #BCA304;
     font-size: 0.7rem;
     font-weight: bold;
     line-height: 1.3;
@@ -41,7 +42,8 @@ body {
     font-size: 0.74rem;
     font-weight: normal;
     line-height: 1.3;
-    margin-bottom: 0.25rem;}
+    margin-bottom: 0.25rem;
+    color: #202026;}
 
 .headlines {
     font-family: 'Montserrat', sans-serif;
@@ -50,7 +52,7 @@ body {
     font-size: 1rem;
     font-style: italic;
     font-weight: bold;
-    color: #CFCCA4;}
+    color: #DBD8AB;}
     .headlines.yellow {
     color: #D5B900;
     text-align: left;
@@ -89,15 +91,10 @@ body {
     max-width: 100%;
     font-size: 0.8rem;
     font-weight: normal;
-    line-height: 1.3;}
+    line-height: 1.3;
+    color: #202026;}
 
 .central { text-align: center; }
-
-.judulweb {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.5rem;
-    font-weight: bold;}
-
 
 
 .header {
@@ -112,7 +109,7 @@ body {
     margin-bottom: 0; }
 
   .header h1, .header h2, .header h3, .header h4, .header h5, .header h6 {
-    line-height: 0.5;
+    line-height: 13px;
     margin-bottom: 0.5rem; }
     .header h1.subheader, .header h2.subheader, .header h3.subheader, .header h4.subheader, .header h5.subheader, .header h6.subheader {
       line-height: 1.4; }
@@ -125,9 +122,9 @@ body {
     background: #EAE5C8}
 
   .footer {
-  border-width: 0px;
-  margin-bottom: 0px;
-  padding-bottom: 6rem; padding-top: 1rem;
+  width: 100%;
+  position: fixed;
+  bottom:0;  
   margin-top: 2rem;
   background: #DDD320;
   color: #333333; }
@@ -138,9 +135,9 @@ body {
       line-height: 1.4; }
 
   .footer2 {
-  border-width: 0px;
-  margin: 0px;
-  padding: 0rem;
+  width: 100%;
+  position: fixed;
+  bottom:0;  
   background: #ABA41F;
   color: #333333; }
   .footer2 h1, .footer2 h2, .footer2 h3, .footer2 h4, .footer2 h5, .footer2 h6 {
@@ -208,10 +205,22 @@ body {
   padding: 0.35rem 0.4em;
   background-color: #F9F173;
   border-color: #9C9223;
-  color: #B0A813}
+  color: #C0B500;}
     tombol.white:hover, tombol.white:focus, .tombol.white:hover, .tombol.white:focus{
-      background-color: #FFF000; }
+      background-color: #FFEA00; color: #9C9223;}
 
+  tombol.gambar, .tombol.gambar {
+    background-color: transparent;
+    border-style: solid;
+    border-width: 7px;
+    border-color: transparent;
+    position: center-block;}
+    tombol.gambar:hover, tombol.gambar:focus, .tombol.gambar:hover, .tombol.gambar:focus {
+      border-style: solid;
+      border-width: 7px;
+      border-color: #FFE100;}
+
+  
   tombol.large, .tombol.large {
     background-color: #05C207;
     border-color: #06CB24;
@@ -227,18 +236,15 @@ body {
 
   tombol.info, .tombol.info {
     background-color: #DDCB0B;
-    border-color: #DDD320;
+    border-color: #D4D000;
     color: #FFF;
     border-style: solid;
     border-width: 3px;
-    font-weight: normal;
+    font-weight: bold;
     border-radius: 1000px;
     font-size: 0.7rem; }
     tombol.info:hover, tombol.info:focus, .tombol.info:hover, .tombol.info:focus {
-      background-color: #CEBD03;
-      }
-    tombol.info:hover, tombol.info:focus, .tombol.info:hover, .tombol.info:focus {
-      color: #FFFFFF; }
+      background-color: #BFAF0B;}
   
   tombol.tiny, .tombol.tiny {
     margin-top: 0px; margin-bottom: 0px;
@@ -249,10 +255,10 @@ body {
     border-radius: 3px;
     border-width: 2 px;
     background-color: #EAE5C8;
-    border-color: #D2D19F;
+    border-color: #C9C885;
     color: #333;
     }
     tombol.tiny:hover, tombol.tiny:focus, .tombol.tiny:hover, .tombol.tiny:focus {
-      background-color: #FFFA06; }
-    tombol.tiny:hover, tombol.tiny:focus, .tombol.tiny:hover, .tombol.info:focus {
-       }
+      background-color: #F3E16A; }
+    
+
