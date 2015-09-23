@@ -12,9 +12,9 @@
      (GET "/home" req (mock/home))
      (GET "/explanation" req (mock/explanation))
 
-     (GET "/:id" [id] (articles/open id))
-
      (GET "/hello/:id" [id] (str "HellooUoo " id))
+
+     (GET "/:id" [id] (articles/open 2))
 
      (resources "public/")
      (not-found "Page not found."))))
