@@ -16,6 +16,7 @@
 
      (GET "/articles" req (articles/open))
      (GET "/:id" [id] (articles/open id))
+     (GET "/article/:id" [id] (articles/open id)) ;why when using this GET the css styling are gone while the above is fine?
 
      (resources "public/")
      (not-found "Page not found."))))
