@@ -14,7 +14,8 @@
 
      (GET "/hello/:id" [id] (str "HellooUoo " id))
 
-     (GET "/:id" [id] (articles/open 2))
+     (GET "/articles" req (articles/open))
+     (GET "/:id" [id] (articles/open id))
 
      (resources "public/")
      (not-found "Page not found."))))
