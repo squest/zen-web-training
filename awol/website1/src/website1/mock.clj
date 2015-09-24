@@ -1,7 +1,7 @@
 (ns website1.mock
   (:require
-  [hiccup.core :as hc]
-  [hiccup.page :as hp]))
+    [hiccup.core :as hc]
+    [hiccup.page :as hp]))
 
 (def links
   (list   [:link {:href "/css/foundationmock.css", :type "text/css", :rel "stylesheet"}
@@ -10,8 +10,8 @@
           [:link {:type "text/css", :rel "stylesheet", :href "https://fonts.googleapis.com/css?family=Montserrat:400"}]))
 
 (defn home []
-  (hp/html5 [:head links]
-
+  (hp/html5 
+    [:head links]
     [:body
      [:div {:class "header"}
       [:div {:class "row"}
@@ -141,8 +141,8 @@
         [:h6 "Copyright stuffs."] " "]]]]))
 
 (defn explanation []
-  (hp/html5 [:head links]
-
+  (hp/html5 
+    [:head links]
     [:body
      [:div {:class "header"}
       [:div {:class "row"}
