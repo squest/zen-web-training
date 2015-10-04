@@ -6,19 +6,27 @@
     [website1.articles :as articles]))
 
 (defn all-routes
-  ([]
-   (routes
-     (GET "/" req (mock/home))
-     (GET "/home" req (mock/home))
-     (GET "/explanation" req (mock/explanation))
+  []
+  (routes
+    (GET "/" req (mock/home))
+    (GET "/home" req (mock/home))
+    (GET "/explanation" req (mock/explanation))
 
-     (GET "/hello/:id" [id] (str "HellooUoo " id))
+    (GET "/hello/:id" [id] (str "HellooUoo " id))
 
-     (GET "/articles" req (articles/open))
-     (GET "/:id" [id] (articles/open id))
-     (GET "/article/:id" [id] (articles/open id)) ;why when using this GET the css styling are gone while the above is fine?
+    (GET "/articles" req (articles/open))
 
-     (resources "public/")
-     (not-found "Page not found."))))
 
+    (GET "/article/:id" [id] (articles/open id))
+
+    (GET "/add" req (articles/new))
+    (POST "/add" req
+      (let [new-article (get-in req [:params])]
+        (do (articles/addnew new-article)
+            "hello wold")))
+
+
+
+    (resources "public/")
+    (not-found "Page not found.")))
 

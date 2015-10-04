@@ -48,11 +48,13 @@ body {
 .headlines {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
+    padding-bottom: 2rem;
+    padding-top: 1rem;
     max-width: 100%;
     font-size: 1rem;
     font-style: italic;
     font-weight: bold;
-    color: #DBD8AB;}
+    color: #B0A813;}
     .headlines.yellow {
     color: #D5B900;
     text-align: left;
