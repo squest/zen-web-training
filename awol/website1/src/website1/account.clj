@@ -25,8 +25,22 @@
                    "THE GREATEST WEB ON EARTH"]]
 
                  [:div {:class "row"}
-                  [:div {:class "large-12 columns central"} " "
-                   [:a {:class "tombol tiny", :href "/signin"}, "Sign In"] " "]]
+                  [:div {:class "large-12 columns"}
+
+                   [:form {:action "/signin" :method "post"}
+
+                    [:div {:class "row"}
+                     [:div {:class "large-12 columns" :style "padding-bottom: 2rem;"}
+                      [:label "Username"
+                       [:input {:type "text", :name "user", :placeholder "Type your username here"}]]]]
+
+                    [:div {:class "row"}
+                     [:div {:class "large-12 columns" :style "padding-bottom: 2rem;"}
+                      [:label "Password"
+                       [:input {:type "text", :name "password", :placeholder "Type your password here"}]]]]
+
+                    [:div {:class "row"}
+                     [:input {:type "submit", :class "tombol right"}]]]]]
 
                  [:div {:class "row"}
                   [:div {:class "large-12 columns central"} " "
@@ -73,7 +87,8 @@
 
              footer]))
 
-(defn is-account [user password]
+(defn signin
+  [{:keys [user password]}]
   (let [user (->> (filter #(= (:user %) (str user)) (->> (slurp "resources/public/accounts.edn")
                                                          (edn/read-string))))]
     (cond (empty? user) (hp/html5 [:head links]
@@ -93,29 +108,3 @@
                            [:div {:class "row"}
                             [:div {:class "large-12 columns headlines"}
                              "Password is wrong!"]]]))))
-
-(defn signin []
-  (hp/html5 [:head links]
-            [:body
-             [:div {:class "row"}
-              [:div {:class "large-12 columns headlines"}
-               "SIGN IN PAGE"]]
-
-             [:form {:action "/signin" :method "post"}
-
-              [:div {:class "row"}
-               [:div {:class "large-12 columns" :style "padding-bottom: 2rem;"}
-                [:label "Username"
-                 [:input {:type "text", :name "user", :placeholder "Type your username here"}]]]]
-
-              [:div {:class "row"}
-               [:div {:class "large-12 columns" :style "padding-bottom: 2rem;"}
-                [:label "Password"
-                 [:input {:type "text", :name "password", :placeholder "Type your password here"}]]]]
-
-              [:div {:class "row"}
-               [:input {:type "submit", :class "tombol right"}]]]
-
-             footer]))
-
-
