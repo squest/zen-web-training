@@ -3,12 +3,12 @@
     [compojure.core :refer [routes GET POST context]]
     [compojure.route :refer [not-found resources]]
     [website1.mock :as mock]
-    [website1.articles :as articles]))
+    [website1.articles :as articles]
+    [website1.account :as signs]))
 
 (defn all-routes
   []
   (routes
-    (GET "/" req (mock/home))
     (GET "/home" req (mock/home))
     (GET "/explanation" req (mock/explanation))
 
@@ -23,7 +23,9 @@
     (POST "/add" req
       (let [new-article (get-in req [:params])]
         (do (articles/addnew new-article)
-            "hello wold")))
+            "Article added!")))
+
+    (GET "/" req (signs/mainpage))
 
 
 
