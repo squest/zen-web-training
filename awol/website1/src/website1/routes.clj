@@ -28,10 +28,9 @@
     (GET "/" req (signs/mainpage))
 
     (GET "/signin" req (signs/signin))
-
     (POST "/signin" req
       (let [account (get-in req [:params])]
-        (do (signs/signin account))))
+        (do (signs/is-account account))))
 
     (GET "/signup" req (signs/signup))
     (POST "/signup" req
