@@ -27,7 +27,7 @@
                  [:div {:class "row"}
                   [:div {:class "large-12 columns"}
 
-                   [:form {:action "/signup" :method "post"}
+                   [:form {:action "/signin" :method "post"}
 
                     [:div {:class "row"}
                      [:div {:class "large-12 columns" :style "padding-bottom: 2rem;"}
@@ -51,7 +51,12 @@
 
 (defn new-account
   [{:keys [user password]}]
-  (->> {:user     (str user),
+  (->> {:id       (->> (:id (last (->> (slurp (str "resources/public/accounts.edn"))
+                                       (edn/read-string))))
+                       (edn/read-string)
+                       (inc)
+                       (str)),
+        :user     (str user),
         :password (str password)}
        (conj (->> (slurp (str "resources/public/accounts.edn"))
                   (edn/read-string)))
@@ -83,27 +88,24 @@
              footer]))
 
 (defn signin [user password]
-  (hp/html5 [:head links]
-            [:body
-             [:div {:class "row"}
-              [:div {:class "large-12 columns headlines"}
-               "SIGN IN HERE"]]
+  (let [user (->> (filter #(= (:user %) (str user)) (->> (slurp "resources/public/accounts.edn")
+                                                         (edn/read-string))))]
+    (cond (empty? user) (hp/html5 [:head links]
+                                  [:body
+                                   [:div {:class "row"}
+                                    [:div {:class "large-12 columns headlines"}
+                                     "Username not found"]]])
 
-             [:form {:action "/signin" :method "post"}
+          (= (map :password user) (str password)) (hp/html5 [:head links]
+                                                            [:body
+                                                             [:div {:class "row"}
+                                                              [:div {:class "large-12 columns headlines"}
+                                                               (str "Hi " user " !")]]])
 
-              [:div {:class "row"}
-               [:div {:class "large-12 columns" :style "padding-bottom: 2rem;"}
-                [:label "Username"
-                 [:input {:type "text", :name "user", :placeholder "Type your username here"}]]]]
-
-              [:div {:class "row"}
-               [:div {:class "large-12 columns" :style "padding-bottom: 2rem;"}
-                [:label "Password"
-                 [:input {:type "text", :name "password", :placeholder "Type your password here"}]]]]
-
-              [:div {:class "row"}
-               [:input {:type "submit", :class "tombol right"}]]]
-
-             footer]))
+          :else (hp/html5 [:head links]
+                          [:body
+                           [:div {:class "row"}
+                            [:div {:class "large-12 columns headlines"}
+                             "Password is wrong!"]]]))))
 
 
