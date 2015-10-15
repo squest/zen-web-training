@@ -87,7 +87,7 @@
 
              footer]))
 
-(defn signin [user password]
+(defn is-account [user password]
   (let [user (->> (filter #(= (:user %) (str user)) (->> (slurp "resources/public/accounts.edn")
                                                          (edn/read-string))))]
     (cond (empty? user) (hp/html5 [:head links]

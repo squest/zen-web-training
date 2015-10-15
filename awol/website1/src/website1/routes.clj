@@ -26,11 +26,12 @@
             "Article added!")))
 
     (GET "/" req (signs/mainpage))
-    (GET "/signup" req (signs/signin))
+
+    (GET "/signin" req (signs/signin))
+
     (POST "/signin" req
       (let [account (get-in req [:params])]
-        (do (signs/signin account)
-            "You have made an account!")))
+        (do (signs/signin account))))
 
     (GET "/signup" req (signs/signup))
     (POST "/signup" req
