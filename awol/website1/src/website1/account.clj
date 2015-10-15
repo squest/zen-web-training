@@ -40,7 +40,7 @@
                        [:input {:type "text", :name "password", :placeholder "Type your password here"}]]]]
 
                     [:div {:class "row"}
-                     [:input {:type "submit", :class "tombol right"}]]]]]
+                     [:input {:type "submit", :class "tombol tiny right"}]]]]]
 
                  [:div {:class "row"}
                   [:div {:class "large-12 columns central"} " "
@@ -87,6 +87,7 @@
 
              footer]))
 
+
 (defn signin
   [{:keys [user password]}]
   (let [user (->> (filter #(= (:user %) (str user)) (->> (slurp "resources/public/accounts.edn")
@@ -95,16 +96,24 @@
                                   [:body
                                    [:div {:class "row"}
                                     [:div {:class "large-12 columns headlines"}
-                                     "Username not found"]]])
+                                     "Username not found"]]
 
-          (= (map :password user) (str password)) (hp/html5 [:head links]
+                                   [:div {:class "row"}
+                                    [:div {:class "large-12 columns central"} " "
+                                     [:a {:class "tombol large", :href "/"}, "Try again"] " "]]])
+
+          (= (:password (first user)) (str password)) (hp/html5 [:head links]
                                                             [:body
                                                              [:div {:class "row"}
                                                               [:div {:class "large-12 columns headlines"}
-                                                               (str "Hi " user " !")]]])
+                                                               (str "Hi " (:user (first user)) " !")]]])
 
           :else (hp/html5 [:head links]
                           [:body
                            [:div {:class "row"}
                             [:div {:class "large-12 columns headlines"}
-                             "Password is wrong!"]]]))))
+                             "Password is wrong!"]]
+
+                           [:div {:class "row"}
+                            [:div {:class "large-12 columns central"} " "
+                             [:a {:class "tombol large", :href "/"}, "Try again"] " "]]]))))
