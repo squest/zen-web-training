@@ -40,7 +40,7 @@
                        [:input {:type "text", :name "password", :placeholder "Type your password here"}]]]]
 
                     [:div {:class "row"}
-                     [:input {:type "submit", :class "tombol tiny right"}]]]]]
+                     [:input {:type "submit", :class "tombol tiny right", :value "Sign In"}]]]]]
 
                  [:div {:class "row"}
                   [:div {:class "large-12 columns central"} " "
@@ -83,7 +83,7 @@
                  [:input {:type "text", :name "password", :placeholder "Type your password here"}]]]]
 
               [:div {:class "row"}
-               [:input {:type "submit", :class "tombol right"}]]]
+               [:input {:type "submit", :class "tombol right", :value "Sign Up"}]]]
 
              footer]))
 
