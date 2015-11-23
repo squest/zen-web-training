@@ -4,7 +4,9 @@
     [compojure.route :refer [not-found resources]]
     [website1.mock :as mock]
     [website1.articles :as articles]
-    [website1.account :as signs]))
+    [website1.account :as signs]
+    [clojure.edn :as edn]
+    ))
 
 (defn all-routes
   []
@@ -38,9 +40,6 @@
       (let [new-user (get-in req [:params])]
         (do (signs/new-account new-user)
             "You have made an account!")))
-
-
-
 
     (resources "public/")
     (not-found "Page not found.")))
