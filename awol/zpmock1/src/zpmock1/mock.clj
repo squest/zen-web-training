@@ -45,4 +45,3 @@
                    [:a {:class "tombol large", :href "/signup"}, "Sign Up"] " "]]
 
                  footer])))
-
