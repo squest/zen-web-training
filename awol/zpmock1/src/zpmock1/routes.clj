@@ -8,7 +8,7 @@
   []
   (routes
     (GET "/home" req (mock/home))
-    (GET "/hello/:id" [id] (str "HellooUoo " id))
+    (GET "/try" [id] (mock/try))
 
     (resources "public/")
     (not-found "Page not found.")))
