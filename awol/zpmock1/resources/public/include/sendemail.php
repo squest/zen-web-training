@@ -4,13 +4,12 @@ require_once('phpmailer/class.phpmailer.php');
 
 $mail = new PHPMailer();
 
-if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+if( isset( $_POST['template-contactform-submit'] ) AND $_POST['template-contactform-submit'] == 'submit' ) {
     if( $_POST['template-contactform-name'] != '' AND $_POST['template-contactform-email'] != '' AND $_POST['template-contactform-message'] != '' ) {
 
         $name = $_POST['template-contactform-name'];
         $email = $_POST['template-contactform-email'];
         $phone = $_POST['template-contactform-phone'];
-        $service = $_POST['template-contactform-service'];
         $subject = $_POST['template-contactform-subject'];
         $message = $_POST['template-contactform-message'];
 
@@ -31,12 +30,11 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             $name = isset($name) ? "Name: $name<br><br>" : '';
             $email = isset($email) ? "Email: $email<br><br>" : '';
             $phone = isset($phone) ? "Phone: $phone<br><br>" : '';
-            $service = isset($service) ? "Service: $service<br><br>" : '';
             $message = isset($message) ? "Message: $message<br><br>" : '';
 
             $referrer = $_SERVER['HTTP_REFERER'] ? '<br><br><br>This Form was submitted from: ' . $_SERVER['HTTP_REFERER'] : '';
 
-            $body = "$name $email $phone $service $message $referrer";
+            $body = "$name $email $phone $message $referrer";
 
             $mail->MsgHTML( $body );
             $sendEmail = $mail->Send();

@@ -96,11 +96,6 @@ h6 > span:not(.nocolor),
 .team-title span,
 .pricing-box.best-price .pricing-price,
 .btn-link,
-.pagination > li > a, .pagination > li > span,
-.pagination > li > a:hover,
-.pagination > li > span:hover,
-.pagination > li > a:focus,
-.pagination > li > span:focus,
 .dark .post-timeline .entry:hover .entry-timeline,
 .dark .post-timeline .entry:hover .timeline-divider { color: <?php echo $color; ?>; }
 
@@ -115,10 +110,7 @@ h6 > span:not(.nocolor),
 .dark.overlay-menu #header-wrap:not(.not-dark) #primary-menu > ul > li:hover > a,
 .dark.overlay-menu #header-wrap:not(.not-dark) #primary-menu > ul > li.current > a,
 .overlay-menu #primary-menu.dark > ul > li:hover > a,
-.overlay-menu #primary-menu.dark > ul > li.current > a,
-.nav-tree li:hover > a,
-.nav-tree li.current > a,
-.nav-tree li.active > a { color: <?php echo $color; ?> !important; }
+.overlay-menu #primary-menu.dark > ul > li.current > a { color: <?php echo $color; ?> !important; }
 
 #primary-menu.style-3 > ul > li.current > a,
 #primary-menu.sub-title > ul > li:hover > a,
@@ -156,10 +148,7 @@ ul.tab-nav.tab-nav2 li.ui-state-active a,
 .dark .i-circled:hover,
 .dark ul.tab-nav.tab-nav2 li.ui-state-active a,
 .dark .tagcloud a:hover,
-.ei-slider-thumbs li.ei-slider-element,
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus { background-color: <?php echo $color; ?>; }
+.ei-slider-thumbs li.ei-slider-element { background-color: <?php echo $color; ?>; }
 
 .bgcolor,
 .button.button-3d:not(.button-white):not(.button-dark):not(.button-border):not(.button-black):not(.button-red):not(.button-teal):not(.button-yellow):not(.button-green):not(.button-brown):not(.button-aqua):not(.button-purple):not(.button-leaf):not(.button-pink):not(.button-blue):not(.button-dirtygreen):not(.button-amber):not(.button-lime):hover,
@@ -203,8 +192,7 @@ ul.tab-nav.tab-nav2 li.ui-state-active a,
 #primary-menu.dark ul li .mega-menu-content,
 .dark #primary-menu:not(.not-dark) ul li .mega-menu-content.style-2,
 #primary-menu.dark ul li .mega-menu-content.style-2,
-.dark #top-cart .top-cart-content,
-.tabs.tabs-tb ul.tab-nav li.ui-tabs-active a { border-top-color: <?php echo $color; ?>; }
+.dark #top-cart .top-cart-content { border-top-color: <?php echo $color; ?>; }
 
 #page-menu.dots-menu nav li .dots-menu-caption:after,
 .title-block { border-left-color: <?php echo $color; ?>; }
@@ -217,8 +205,7 @@ ul.tab-nav.tab-nav2 li.ui-state-active a,
 .fancy-title.title-bottom-border h4,
 .fancy-title.title-bottom-border h5,
 .fancy-title.title-bottom-border h6,
-.more-link,
-.tabs.tabs-bb ul.tab-nav li.ui-tabs-active a { border-bottom-color: <?php echo $color; ?>; }
+.more-link { border-bottom-color: <?php echo $color; ?>; }
 
 .border-color,
 .process-steps li.active a,
