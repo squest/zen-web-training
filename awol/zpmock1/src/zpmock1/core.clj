@@ -1,10 +1,9 @@
 (ns zpmock1.core
-    (:require
-      [org.httpkit.server :as http]
-      [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-      [noir.cookies :as cookies]
-      [zpmock1.routes :refer [all-routes]]
-      ))
+  (:require
+    [org.httpkit.server :as http]
+    [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+    [noir.cookies :as cookies]
+    [zpmock1.routes :refer [all-routes]]))
 
 (defonce server (atom nil))
 
