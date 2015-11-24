@@ -1,4 +1,4 @@
-(ns zpmock1.original
+(ns zpmock1.land
   (:require
     [hiccup.core :as hc]
     [hiccup.page :as hp]
@@ -25,7 +25,7 @@
                  [:span {:class "nocolor hidden-xs"}] "jawab soal "
                  [:span {:class "nocolor hidden-xs"}] "di sini?"]
                 [:p {:class "lead"} "Tempat latihan soal, for those who can take the challenge."]]
-               [:a {:data-offset "70", :data-speed "1250", :data-easing "easeInOutExpo", :data-scrollto "#section-contact", :class "button button-border button-light button-circle", :href "#"} "Get in Touch"] "\n\n\t\t\t\t\t"] "\n\t\t\t\t"] "\n\n\t\t\t\t"
+               [:a {:data-offset "70", :data-speed "1250", :data-easing "easeInOutExpo", :data-scrollto "#section-contact", :class "button button-border button-light button-circle", :href "#"} "Yes!"]]]
              [:div {:class "video-wrap"}
               [:div {:style "background: rgba(0,0,0,0.8);", :class "video-overlay"}]]]]]
 

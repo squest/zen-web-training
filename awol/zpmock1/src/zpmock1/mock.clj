@@ -4,18 +4,19 @@
     [hiccup.page :as hp]
     [zpmock1.core-components :as components]))
 
-
 (defn home
   ([] (hp/html5
         [:html {:lang "en-US", :dir "ltr"}
-         [:head components/links
+         [:head
+          components/links
           components/style]
 
          [:body {:class "stretched"}
           [:div {:class "clearfix", :id "wrapper"}
            components/header-light-1
 
-           "<!-- Slider\n\t\t============================================= -->" "\n\t\t"
+
+           "<!-- Slider\n\t\t============================================= -->"
            [:section {:class "full-screen", :id "slider"}
             [:div {:data-stellar-background-ratio "0.3", :style "background-image: url('http://www.kidtection.co.uk/wp-content/uploads/2014/05/Kidtection-Laptop-2.jpg');", :class "full-screen section dark parallax nopadding nomargin noborder ohidden"}
              [:div {:class "container center"}
@@ -25,9 +26,9 @@
                  [:span {:class "nocolor hidden-xs"}] "jawab soal "
                  [:span {:class "nocolor hidden-xs"}] "di sini?"]
                 [:p {:class "lead"} "Tempat latihan soal, for those who can take the challenge."]]
-               [:a {:data-offset "70", :data-speed "1250", :data-easing "easeInOutExpo", :data-scrollto "#section-contact", :class "button button-border button-light button-circle", :href "#"} "Get in Touch"] "\n\n\t\t\t\t\t"] "\n\t\t\t\t"] "\n\n\t\t\t\t"
+               [:a {:data-offset "70", :data-speed "1250", :data-easing "easeInOutExpo", :data-scrollto "#section-contact", :class "button button-border button-light button-circle", :href "#"} "Yes!"]]]
              [:div {:class "video-wrap"}
               [:div {:style "background: rgba(0,0,0,0.8);", :class "video-overlay"}]]]]]
 
-          "<!-- Footer Scripts\n\t============================================= -->" "\n\t"
+          "<!-- Footer Scripts\n\t============================================= -->"
           [:script {:src "../js/functions.js", :type "text/javascript"}]]])))
