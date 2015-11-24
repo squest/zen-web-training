@@ -6,7 +6,8 @@
                  [lib-noir "0.9.9"]
                  [http-kit "2.1.19"]
                  [compojure "1.4.0"]
-                 [ring/ring-defaults "0.1.5"]]
+                 [ring/ring-defaults "0.1.5"]
+                 [lib-noir "0.9.9"]]
   :plugins [[lein-ring "0.9.7"]]
   :ring {:handler zpmock1.handler/app}
   :profiles

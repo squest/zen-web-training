@@ -4,10 +4,10 @@
     [hiccup.page :as hp]))
 
 (def links
-  (list   [:link {:href "/css/foundationmock.css", :type "text/css", :rel "stylesheet"}
-          [:link {:href "/css/stylemock.css", :type "text/css", :rel "stylesheet"}]]
-          [:link {:type "text/css", :rel "stylesheet", :href "https://fonts.googleapis.com/css?family=Poiret+One"}]
-          [:link {:type "text/css", :rel "stylesheet", :href "https://fonts.googleapis.com/css?family=Montserrat:400"}]))
+  (list [:link {:href "/css/foundationmock.css", :type "text/css", :rel "stylesheet"}
+         [:link {:href "/css/stylemock.css", :type "text/css", :rel "stylesheet"}]]
+        [:link {:type "text/css", :rel "stylesheet", :href "https://fonts.googleapis.com/css?family=Poiret+One"}]
+        [:link {:type "text/css", :rel "stylesheet", :href "https://fonts.googleapis.com/css?family=Montserrat:400"}]))
 
 (def footer
   [:div {:class "footer2"}

@@ -8,23 +8,23 @@
 (defonce server (atom nil))
 
 (defn start
-      ([] (start 3000))
-      ([port]
-        (->> (-> (all-routes)
-                 (cookies/wrap-noir-cookies*)
-                 (wrap-defaults (update-in site-defaults
-                                           [:security :anti-forgery]
-                                           #(not %)))
-                 (http/run-server {:port port}))
-             (reset! server))))
+  ([] (start 3000))
+  ([port]
+   (->> (-> (all-routes)
+            (cookies/wrap-noir-cookies*)
+            (wrap-defaults (update-in site-defaults
+                                      [:security :anti-forgery]
+                                      #(not %)))
+            (http/run-server {:port port}))
+        (reset! server))))
 
 (defn stop
-      []
-      (@server)
-      (reset! server nil))
+  []
+  (@server)
+  (reset! server nil))
 
 (defn reset
-      []
-      (stop)
-      (Thread/sleep 200)
-      (start))
+  []
+  (stop)
+  (Thread/sleep 200)
+  (start))
