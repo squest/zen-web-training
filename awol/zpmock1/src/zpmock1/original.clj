@@ -1,4 +1,4 @@
-(ns zpmock1.land
+(ns zpmock1.original
   (:require
     [hiccup.core :as hc]
     [hiccup.page :as hp]

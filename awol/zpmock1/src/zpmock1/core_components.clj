@@ -34,10 +34,10 @@
 
 (def logo-header
   [:div {:id "logo"}
-   [:a {:data-dark-logo "images/canvasone-dark.png", :class "standard-logo", :href "index.html"}
-    [:img {:alt "Canvas Logo", :src "images/canvasone.png"}]]
-   [:a {:data-dark-logo "images/canvasone-dark@2x.png", :class "retina-logo", :href "index.html"}
-    [:img {:alt "Canvas Logo", :src "images/canvasone@2x.png"}]]])
+   [:a {:data-dark-logo "images/ZPlogo.png", :class "standard-logo", :href "index.html"}
+    [:img {:alt "Canvas Logo", :src "images/ZPlogo.png"}]]
+   [:a {:data-dark-logo "images/ZPlogo@2x.png", :class "retina-logo", :href "index.html"}
+    [:img {:alt "Canvas Logo", :src "images/ZPlogo@2x.png"}]]])
 
 (def navigation-light-header
   [:nav {:id "primary-menu"}

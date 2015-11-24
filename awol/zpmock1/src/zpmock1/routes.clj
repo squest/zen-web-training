@@ -4,7 +4,6 @@
     [compojure.route :refer [not-found resources]]
     [zpmock1.core-components :as components]
     [zpmock1.landing :as land]
-
     [zpmock1.original :as ori]))
 
 (defn all-routes
