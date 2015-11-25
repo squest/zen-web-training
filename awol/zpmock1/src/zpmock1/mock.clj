@@ -5,6 +5,13 @@
     [zpmock1.core-components :as components]))
 
 (def section-CTArank
+  (list [:p {:style "max-width: 800px;", :class "lead divcenter bottommargin"} "Already have an account?"]
+        [:h2 {:style "max-width: 700px; font-size: 40px;", :class "divcenter bottommargin font-body"} "See your rank"]
+        [:p {:style "font-size: 16px;", :class "bottommargin"}
+         [:ul {:style "list-style-type:none"}
+          [:li [:a {:data-offset "70", :data-speed "1250", :data-easing "easeInOutExpo", :data-scrollto "#section-contact", :class "button button-border button-light button-circle", :href "#"} "Here"]]]]))
+
+(def section-CTAprogress
   (list [:h2 {:style "max-width: 700px; font-size: 40px;", :class "divcenter bottommargin font-body"} "A digital web studio creating stunning &amp; engaging online experiences"]
         [:p {:style "max-width: 800px;", :class "lead divcenter bottommargin"} "Ford Foundation reduce child mortality fight against oppression refugee disruption pursue these aspirations effect. Free-speech Nelson Mandela change liberal; challenges of our times sustainability institutions."]
         [:p {:style "font-size: 16px;", :class "bottommargin"}
@@ -82,6 +89,8 @@
              [:div {:class "center page-section", :id "section-about"}
               [:div {:class "container clearfix"}
                section-CTArank
+               [:div {:class "clear"}]
+                section-CTAprogress
                [:div {:class "clear"}]
                section-founders]]]]]
 
