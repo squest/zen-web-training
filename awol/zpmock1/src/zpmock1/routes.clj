@@ -9,6 +9,7 @@
 (defn all-routes
   []
   (routes
+    (GET "/" req (land/home))
     (GET "/home" req (land/home))
     (GET "/try" [id] (ori/try))
 
