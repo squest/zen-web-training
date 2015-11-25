@@ -4,21 +4,82 @@
     [hiccup.page :as hp]
     [zpmock1.core-components :as components]))
 
-(def section-CTArank
+(def section-CTArankprogress
   (list [:p {:style "max-width: 800px;", :class "lead divcenter bottommargin"} "Already have an account?"]
-        [:h2 {:style "max-width: 700px; font-size: 40px;", :class "divcenter bottommargin font-body"} "See your rank"]
+        [:h2 {:style "max-width: 700px; font-size: 50px;", :class "divcenter bottommargin font-body"}
+         [:span {:data-speed "2000", :data-rotate "fadeIn", :data-separator "|", :class "text-rotater nocolor"}
+          [:span {:class "t-rotate t700 font-body"} "See your Rank|or|see your Progress."]]]
         [:p {:style "font-size: 16px;", :class "bottommargin"}
          [:ul {:style "list-style-type:none"}
           [:li [:a {:data-offset "70", :data-speed "1250", :data-easing "easeInOutExpo", :data-scrollto "#section-contact", :class "button button-border button-light button-circle", :href "#"} "Here"]]]]))
 
-(def section-CTAprogress
-  (list [:h2 {:style "max-width: 700px; font-size: 40px;", :class "divcenter bottommargin font-body"} "A digital web studio creating stunning &amp; engaging online experiences"]
-        [:p {:style "max-width: 800px;", :class "lead divcenter bottommargin"} "Ford Foundation reduce child mortality fight against oppression refugee disruption pursue these aspirations effect. Free-speech Nelson Mandela change liberal; challenges of our times sustainability institutions."]
-        [:p {:style "font-size: 16px;", :class "bottommargin"}
-         [:a {:class "more-link", :data-offset "70", :data-speed "1250", :data-easing "easeInOutExpo", :data-scrollto "#section-services", :href "#"} "Learn more "
-          [:i {:class "icon-angle-right"}]]]))
+(def what-we-do
+  [:div {:class "section nomargin"}
+   [:div {:class "container clearfix"}
+    [:div {:style "max-width: 900px;", :class "divcenter center"}
+     [:h2 {:class "nobottommargin t300 ls1"} "We create experience"]
+     [:h2 {:class "nobottommargin t300 ls1"} "which makes you addicted to learn."]]]])
 
-(def section-founders
+(def learning-recom
+  [:div {:class "container topmargin-lg clearfix"}
+   [:div {:class "owl-carousel topmargin image-carousel", :id "oc-clients"}
+    [:div {:class "oc-item"} [:a {:href "#"} [:img {:alt "Clients", :src "../images/clients/1.png"}]]]
+    [:div {:class "oc-item"} [:a {:href "#"} [:img {:alt "Clients", :src "../images/clients/2.png"}]]]
+    [:div {:class "oc-item"} [:a {:href "#"} [:img {:alt "Clients", :src "../images/clients/3.png"}]]]
+    [:div {:class "oc-item"} [:a {:href "#"} [:img {:alt "Clients", :src "../images/clients/4.png"}]]]
+    [:div {:class "oc-item"} [:a {:href "#"} [:img {:alt "Clients", :src "../images/clients/5.png"}]]]
+    [:div {:class "oc-item"} [:a {:href "#"} [:img {:alt "Clients", :src "../images/clients/6.png"}]]]
+    [:div {:class "oc-item"} [:a {:href "#"} [:img {:alt "Clients", :src "../images/clients/7.png"}]]]
+    [:div {:class "oc-item"} [:a {:href "#"} [:img {:alt "Clients", :src "../images/clients/8.png"}]]]
+    [:div {:class "oc-item"} [:a {:href "#"} [:img {:alt "Clients", :src "../images/clients/9.png"}]]]
+    [:div {:class "oc-item"} [:a {:href "#"} [:img {:alt "Clients", :src "../images/clients/10.png"}]]]]
+   [:script {:type "text/javascript"} "\n\n\t\t\t\t\t\t\tjQuery(document).ready(function($) {\n\n\t\t\t\t\t\t\t\tvar ocClients = $(\"#oc-clients\");\n\n\t\t\t\t\t\t\t\tocClients.owlCarousel({\n\t\t\t\t\t\t\t\t\tmargin: 80,\n\t\t\t\t\t\t\t\t\tloop: true,\n\t\t\t\t\t\t\t\t\tnav: false,\n\t\t\t\t\t\t\t\t\tautoplay: true,\n\t\t\t\t\t\t\t\t\tdots: false,\n\t\t\t\t\t\t\t\t\tautoplayHoverPause: true,\n\t\t\t\t\t\t\t\t\tresponsive:{\n\t\t\t\t\t\t\t\t\t\t0:{ items:2 },\n\t\t\t\t\t\t\t\t\t\t480:{ items:3 },\n\t\t\t\t\t\t\t\t\t\t768:{ items:4 },\n\t\t\t\t\t\t\t\t\t\t992:{ items:5 },\n\t\t\t\t\t\t\t\t\t\t1200:{ items:6 }\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t});\n\n\t\t\t\t\t\t\t});\n\n\t\t\t\t\t\t"]])
+
+(def our-features
+  [:body
+   [:div {:class "common-height clearfix"}
+    [:div {:style "background: url('../images/services/main-bg.jpg') center center no-repeat; background-size: cover;", :class "col-md-4 hidden-xs"}]
+    [:div {:class "col-md-8"}
+     [:div {:class "max-height"}
+      [:div {:class "row common-height grid-border clearfix"}
+       [:div {:class "col-md-4 col-sm-6 col-padding"}
+        [:div {:class "feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder"}
+         [:div {:class "fbox-icon"}
+          [:a {:href "#"}
+           [:i {:class "icon-et-mobile"}]]]
+         [:h3 "Responsive Framework"]]]
+       [:div {:class "col-md-4 col-sm-6 col-padding"}
+        [:div {:class "feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder"}
+         [:div {:class "fbox-icon"}
+          [:a {:href "#"}
+           [:i {:class "icon-et-presentation"}]]]
+         [:h3 "Beautifully Presented"]]]
+       [:div {:class "col-md-4 col-sm-6 col-padding"}
+        [:div {:class "feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder"}
+         [:div {:class "fbox-icon"}
+          [:a {:href "#"}
+           [:i {:class "icon-et-puzzle"}]]]
+         [:h3 "Extensively Extendable"]]]
+       [:div {:class "col-md-4 col-sm-6 col-padding"}
+        [:div {:class "feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder"}
+         [:div {:class "fbox-icon"}
+          [:a {:href "#"}
+           [:i {:class "icon-et-gears"}]]]
+         [:h3 "Powerfully Customizable"]]]
+       [:div {:class "col-md-4 col-sm-6 col-padding"}
+        [:div {:class "feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder"}
+         [:div {:class "fbox-icon"}
+          [:a {:href "#"}
+           [:i {:class "icon-et-genius"}]]]
+         [:h3 "Geniusly Transformable"]]]
+       [:div {:class "col-md-4 col-sm-6 col-padding"}
+        [:div {:class "feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder"}
+         [:div {:class "fbox-icon"}
+          [:a {:href "#"}
+           [:i {:class "icon-et-hotairballoon"}]]]
+         [:h3 "Industrial Support"]]]]]]]])
+
+(def our-programme
   [:div {:style "max-width: 1000px;", :class "row topmargin-lg divcenter"}
 
    [:div {:class "col-sm-4 bottommargin"}
@@ -57,6 +118,69 @@
      [:div {:class "team-desc team-desc-bg"} [:div {:class "team-title"}
                                               [:h4 "Josh Clark"] [:span "Sales"]]]]]])
 
+(def blog
+  [:div {:class "page-section", :id "section-blog"}
+   [:h2 {:class "center uppercase t300 ls3 font-body"} "From zeniusBlog"]
+   [:div {:class "section nobottommargin"}
+    [:div {:class "container clearfix"} [:div {:class "row topmargin clearfix"}
+                                         [:div {:class "ipost col-sm-6 bottommargin clearfix"}
+                                          [:div {:class "row"}
+                                           [:div {:class "col-md-6"}
+                                            [:div {:class "entry-image nobottommargin"}
+                                             [:a {:href "#"}
+                                              [:img {:alt "Paris", :src "images/blog/1.jpg"}]]]]
+                                           [:div {:style "margin-top: 20px;", :class "col-md-6"}
+                                            [:span {:style "font-style: normal;", :class "before-heading"} "Press &amp; Media"]
+                                            [:div {:class "entry-title"}
+                                             [:h3 {:style "font-size: 22px;", :class "t400"}
+                                              [:a {:href "#"} "Global Meetup Program is Launching!"]]]
+                                            [:div {:class "entry-content"}
+                                             [:a {:class "more-link", :href "#"} "Read more "
+                                              [:i {:class "icon-angle-right"}]]]]]]
+                                         [:div {:class "ipost col-sm-6 bottommargin clearfix"}
+                                          [:div {:class "row"}
+                                           [:div {:class "col-md-6"}
+                                            [:div {:class "entry-image nobottommargin"}
+                                             [:a {:href "#"}
+                                              [:img {:alt "Paris", :src "images/blog/2.jpg"}]]]]
+                                           [:div {:style "margin-top: 20px;", :class "col-md-6"}
+                                            [:span {:style "font-style: normal;", :class "before-heading"} "Inside Scoops"]
+                                            [:div {:class "entry-title"}
+                                             [:h3 {:style "font-size: 22px;", :class "t400"}
+                                              [:a {:href "#"} "The New YouTube Economy unfolds itself"]]]
+                                            [:div {:class "entry-content"}
+                                             [:a {:class "more-link", :href "#"} "Read more "
+                                              [:i {:class "icon-angle-right"}]]]]]]
+                                         [:div {:class "ipost col-sm-6 bottommargin clearfix"}
+                                          [:div {:class "row"}
+                                           [:div {:class "col-md-6"}
+                                            [:div {:class "entry-image nobottommargin"}
+                                             [:a {:href "#"}
+                                              [:img {:alt "Paris", :src "images/blog/3.jpg"}]]]]
+                                           [:div {:style "margin-top: 20px;", :class "col-md-6"}
+                                            [:span {:style "font-style: normal;", :class "before-heading"} "Video Blog"]
+                                            [:div {:class "entry-title"}
+                                             [:h3 {:style "font-size: 22px;", :class "t400"}
+                                              [:a {:href "#"} "Kicking Off Design Party in Style"]]]
+                                            [:div {:class "entry-content"}
+                                             [:a {:class "more-link", :href "#"} "Read more "
+                                              [:i {:class "icon-angle-right"}]]]]]]
+                                         [:div {:class "ipost col-sm-6 bottommargin clearfix"}
+                                          [:div {:class "row"}
+                                           [:div {:class "col-md-6"}
+                                            [:div {:class "entry-image nobottommargin"}
+                                             [:a {:href "#"}
+                                              [:img {:alt "Paris", :src "images/blog/4.jpg"}]]]]
+                                           [:div {:style "margin-top: 20px;", :class "col-md-6"}
+                                            [:span {:style "font-style: normal;", :class "before-heading"} "Inspiration"]
+                                            [:div {:class "entry-title"}
+                                             [:h3 {:style "font-size: 22px;", :class "t400"}
+                                              [:a {:href "#"} "Top Ten Signs You&#39;re a Designer"]]]
+                                            [:div {:class "entry-content"}
+                                             [:a {:class "more-link", :href "#"} "Read more "
+                                              [:i {:class "icon-angle-right"}]]]]]]]]]])
+
+
 (defn home
   ([] (hp/html5
         [:html {:lang "en-US", :dir "ltr"}
@@ -86,13 +210,21 @@
 
            [:section {:id "content"}
             [:div {:class "content-wrap nopadding"}
+
+             [:div {:class "center page-section", :id "section-about" :style "background:#F5E000"}
+              section-CTArankprogress]
+
+             what-we-do
+             learning-recom
+
              [:div {:class "center page-section", :id "section-about"}
-              [:div {:class "container clearfix"}
-               section-CTArank
-               [:div {:class "clear"}]
-                section-CTAprogress
-               [:div {:class "clear"}]
-               section-founders]]]]]
+              our-features]
+
+             [:div {:class "center page-section", :id "section-about"}
+              our-programme]
+
+             [:div {:class "center page-section", :id "section-about"}
+              blog]]]]
 
           "<!-- Footer Scripts\n\t============================================= -->"
           [:script {:src "../js/functions.js", :type "text/javascript"}]]])))
