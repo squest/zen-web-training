@@ -55,7 +55,7 @@
     [:li [:a {:data-href "#section-contact", :href "#"}
       [:div "Contact"]]]]])
 
-(def header-light-1
+(def header-light-public
   [:header {:data-sticky-offset "0", :data-sticky-class "not-dark", :class "full-header dark transparent-header static-sticky", :id "header"}
    [:div {:id "header-wrap"}
     [:div {:class "container clearfix"}
