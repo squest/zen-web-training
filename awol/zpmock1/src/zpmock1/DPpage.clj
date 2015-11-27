@@ -120,31 +120,34 @@
           (components/has-side-panel rec-learning rec-learn directory)
 
           [:section {:id "content"}
-           [:div {:class "content-wrap", :style "padding-top: 40px; padding-bottom: 20px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
+           [:div {:class "content-wrap", :style "padding-top: 40px; padding-bottom: 20px;"}
 
-            prob-title
+            [:div {:class "container clearfix"}
 
+             [:div {:class "content-wrap", :style "padding-top: 20px; padding-bottom: 20px;"} ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
+              prob-title]
+
+             [:section {:id "content"}
+              [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"} ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
+               (components/tabs (problem prob-image prob-question prob-option))]]]
 
             [:div {:class "col-md-2 bottommargin"}
              (components/open-sider "Recommendations" "icon-signal" "button-yellow button-light button-mini")
-             (components/open-sider "Directory" "" "button-leaf button-light button-mini")
+             (components/open-sider "Directory" "" "button-leaf button-light button-mini")]
 
-             [:div {:class "widget widget_links clearfix", :id "shortcodes"}
-              [:h4 {:class "highlight-me"} "Problems Directory"]
-              [:ul
-               [:li [:a {:href "problems.html"}
-                     [:div "Math"]]]
-               [:li [:a {:href "#"}
-                     [:div "Physics"]]]
-               [:li [:a {:href "#"}
-                     [:div "Biology"]]]
-               [:li [:a {:href "#"}
-                     [:div "English"]]]
-               [:li [:a {:href "#"}
-                     [:div "History"]]]]]]
-
-            [:div {:class "col-md-10 bottommargin"}
-             (problem prob-image prob-question prob-option)]]]]
+            [:div {:class "widget widget_links clearfix", :id "shortcodes"}
+             [:h4 {:class "highlight-me"} "Problems Directory"]
+             [:ul
+              [:li [:a {:href "problems.html"}
+                    [:div "Math"]]]
+              [:li [:a {:href "#"}
+                    [:div "Physics"]]]
+              [:li [:a {:href "#"}
+                    [:div "Biology"]]]
+              [:li [:a {:href "#"}
+                    [:div "English"]]]
+              [:li [:a {:href "#"}
+                    [:div "History"]]]]]]]]
 
          "<!-- Footer Scripts\n\t============================================= -->" "\n\t"
          [:script {:src "../js/functions.js", :type "text/javascript"}]])))

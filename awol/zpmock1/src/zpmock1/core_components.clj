@@ -135,9 +135,8 @@
     [:h3 {:style "margin-bottom: 5px;"} "Title of the Problem"]
     [:p {:style "margin-bottom: 20px;"} "Sub-bab atau materi dari soal"]
     [:ol {:class "breadcrumb", :style "margin-bottom: 5px;"}
-     [:li [:a {:href "#"} "Home"]]
-     [:li [:a {:href "#"} "Pages"]]
-     [:li {:class "active"} "Submenu"]]]])
+     [:li [:a {:href "#"} "Rekomendasi Belajar"]]
+     [:li [:a {:href "#"} "Browse Soal"]]]]])
 
 
 ;=============================== TABS ===============================
@@ -160,18 +159,25 @@
     [:div {:id "tabs-15", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-31", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"} prob]
     [:div {:id "tabs-16", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-32", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"} prob]]])
 
-(defn sided [content]
-  [:div {:id "tab-4", :class "tabs side-tabs clearfix ui-tabs ui-widget ui-widget-content ui-corner-all"}
+(defn tabs [content]
+  [:div {:id "tab-4", :class "tabs tabs-alt tabs-tb  clearfix ui-tabs ui-widget ui-widget-content ui-corner-all"}
    [:ul {:class "tab-nav clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all", :role "tablist"}
     [:li {:class "ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-15", :aria-labelledby "ui-id-31", :aria-selected "false"}
-     [:a {:href "#tabs-15", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-31"} "Proin dolor"]]]
+     [:a {:href "#tabs-15", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-31"} "Soal 1"]]
+    [:li {:class "ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-15", :aria-labelledby "ui-id-31", :aria-selected "false"}
+     [:a {:href "#tabs-15", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-31"} "Soal 2"]]
+    [:li {:class "ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-15", :aria-labelledby "ui-id-31", :aria-selected "false"}
+     [:a {:href "#tabs-15", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-31"} "Soal 3"]]]
 
    [:div {:class "tab-container"}
     [:div {:id "tabs-15", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-31", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"}
+     content]
+    [:div {:id "tabs-15", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-31", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"}
+     content]
+    [:div {:id "tabs-15", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-31", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"}
      content]]]
-  (#(vector [:a {:href (str "#tabs-" %), :class "ui-tabs-anchor",
-                 :role "presentation", :tabindex "-1", :id (str "ui-id-" %)}] (str "Soal " %))
-    (inc 0)))
+  ;(#(vector [:a {:href (str "#tabs-" %), :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id (str "ui-id-" %)}] (str "Soal " %)) (inc 0))
+  )
 
 (def tabnew [:div {:id "tab-8", :class "tabs tabs-alt tabs-tb clearfix ui-tabs ui-widget ui-widget-content ui-corner-all"} "\n\n\t\t\t\t\t\t\t"
              [:ul {:class "tab-nav clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all", :role "tablist"} "\n\t\t\t\t\t\t\t\t"
