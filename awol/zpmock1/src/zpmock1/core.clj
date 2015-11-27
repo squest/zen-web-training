@@ -10,7 +10,7 @@
 (defn start
   ([] (start 3000))
   ([port]
-   (println "Starting the server")
+   (println "Showtime!")
    (->> (-> (all-routes)
             (cookies/wrap-noir-cookies*)
             (wrap-defaults (update-in site-defaults

@@ -4,7 +4,6 @@
     [compojure.route :refer [not-found resources]]
     [zpmock1.core-components :as components]
     [zpmock1.landing :as land]
-    [zpmock1.original :as ori]
     [zpmock1.DPpage :as dp]))
 
 (defn all-routes
@@ -12,7 +11,6 @@
   (routes
     (GET "/" req (land/home))
     (GET "/home" req (land/home))
-    (GET "/try" [id] (ori/try))
 
 
     (resources "public/")
