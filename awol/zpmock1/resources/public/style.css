@@ -3162,8 +3162,7 @@ body.side-panel-open:not(.device-xxs):not(.device-xs):not(.device-sm) .body-over
 	position: relative;
 	padding: 50px 0;
 	background-color: #F5F5F5;
-	border-bottom: 1px solid #EEE;
-}
+	border-bottom: 1px solid #EEE;}
 
 #page-title .container { position: relative; }
 

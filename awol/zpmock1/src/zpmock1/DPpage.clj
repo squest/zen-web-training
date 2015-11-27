@@ -45,6 +45,20 @@
     [:div {:class "fluid-width-video-wrapper", :style "padding-top: 56.25%;"}
      [:iframe {:frameborder "0", :src "http://www.youtube.com/embed/SZEflIVnhH8", :id "fitvid264630"}]]]])
 
+
+(def social
+  [:div {:class "widget quick-contact-widget clearfix", :id "s-icons"}
+   [:a {:title "Facebook", :class "social-icon si-colored si-facebook", :href "#"}
+    [:i {:class "icon-facebook"}] [:i {:class "icon-facebook"}]]
+   [:a {:title "Twitter", :class "social-icon si-colored si-twitter", :href "#"}
+    [:i {:class "icon-twitter"}] [:i {:class "icon-twitter"}]]
+   [:a {:title "Github", :class "social-icon si-colored si-github", :href "#"}
+    [:i {:class "icon-github"}] [:i {:class "icon-github"}]]
+   [:a {:title "Google Plus", :class "social-icon si-colored si-gplus", :href "#"}
+    [:i {:class "icon-gplus"}] [:i {:class "icon-gplus"}]]
+   [:a {:title "Instagram", :class "social-icon si-colored si-instagram", :href "#"}
+    [:i {:class "icon-instagram"}] [:i {:class "icon-instagram"}]]])
+
 (def prob-title
   [:div {:class "entry-content"}
    [:h2 {:class "highlight-me"} "Title of Problem"]])
@@ -68,7 +82,7 @@
    [:li [:a {:href "#"} "Sorry I'm colour blind"]]])
 
 (defn problem
-  ([image question option] [:div {:class "widget clearfix", :id "text"}
+  ([image question option] [:div {:class "widget clearfix", :id "text", :style "margin-top: 0px;"}
                             [:form {:class "col-md-12"}
                              [:div {:class "col-md-11"}
                               [:div {:class "col-md-5"} image]
@@ -85,20 +99,6 @@
                               [:a {:class "button button-rounded button-3d button-large button-reveal button-large button-light button-bright-yellow", :style "margin-top: 0px;", :href "#"}
                                [:i {:class "icon-signal"}]
                                [:span "RECOMMENDED LEARNING"]]]]]))
-
-
-(def social
-  [:div {:class "widget quick-contact-widget clearfix", :id "s-icons"}
-   [:a {:title "Facebook", :class "social-icon si-colored si-facebook", :href "#"}
-    [:i {:class "icon-facebook"}] [:i {:class "icon-facebook"}]]
-   [:a {:title "Twitter", :class "social-icon si-colored si-twitter", :href "#"}
-    [:i {:class "icon-twitter"}] [:i {:class "icon-twitter"}]]
-   [:a {:title "Github", :class "social-icon si-colored si-github", :href "#"}
-    [:i {:class "icon-github"}] [:i {:class "icon-github"}]]
-   [:a {:title "Google Plus", :class "social-icon si-colored si-gplus", :href "#"}
-    [:i {:class "icon-gplus"}] [:i {:class "icon-gplus"}]]
-   [:a {:title "Instagram", :class "social-icon si-colored si-instagram", :href "#"}
-    [:i {:class "icon-instagram"}] [:i {:class "icon-instagram"}]]])
 
 (defn do-quiz
   ([] (hp/html5
@@ -192,13 +192,14 @@
 
            (components/container-header-light
              components/fake-logo
-             (components/navigation-header components/do-DP-menu components/search-bar))]
+             (components/navigation-header components/do-DP-menu components/search-bar))
+
+           components/page-title]
 
           (components/has-side-panel rec-learning rec-learn directory)
 
           [:section {:id "content"}
-           [:div {:class "content-wrap", :style "padding-top: 20px; padding-bottom: 20px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
-            components/page-title
+           [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
 
             (problem prob-image prob-question prob-option)]]]
 

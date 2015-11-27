@@ -130,15 +130,13 @@
       [:i {:class "icon-reorder"}]]]]])
 
 (def page-title
-  [:section {:id "page-title"}
+  [:section {:id "page-title", :style "padding-top: 20px; padding-bottom: 0px;"}
    [:div {:class "container clearfix"}
-    [:h1 "Title of the Problem"]
-    [:span "Sub-bab atau materi dari soal"]
-    [:ol {:class "breadcrumb"}
-     [:li
-      [:a {:href "#"} "Home"]]
-     [:li
-      [:a {:href "#"} "Pages"]]
+    [:h3 {:style "margin-bottom: 5px;"} "Title of the Problem"]
+    [:p {:style "margin-bottom: 20px;"} "Sub-bab atau materi dari soal"]
+    [:ol {:class "breadcrumb", :style "margin-bottom: 5px;"}
+     [:li [:a {:href "#"} "Home"]]
+     [:li [:a {:href "#"} "Pages"]]
      [:li {:class "active"} "Submenu"]]]])
 
 
