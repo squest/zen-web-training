@@ -46,6 +46,20 @@
 (def fake-logo (logo-header "images/performance.png"))
 
 ;=============================== HEADER MENU ===============================
+
+(def public-menu
+  (list [:li [:a {:data-href "#section-home", :href "#"} [:div "Home"]]]
+        [:li [:a {:data-href "#section-about", :href "#"} [:div "About"]]]
+        [:li [:a {:data-href "#section-works", :href "#"} [:div "Works"]]]
+        [:li [:a {:data-href "#section-services", :href "#"} [:div "Services"]]]
+        [:li [:a {:data-href "#section-blog", :href "#"} [:div "Blog"]]]
+        [:li [:a {:data-href "#section-contact", :href "#"} [:div "Contact"]]]))
+
+(def do-DP-menu
+  (list [:li {:class "current"} [:a {:data-href "#section-home", :href "#"} [:div "Home"]]]
+        [:li [:a {:data-href "#section-features", :href "#"} [:div "Directory"]]]
+        [:li [:a {:data-href "#section-pricing", :href "#"} [:div "Profile"]]]))
+
 (def search-bar [:div {:id "top-search"}
                  [:a {:id "top-search-trigger", :href "#"}
                   [:i {:class "icon-search3"}]
@@ -54,28 +68,15 @@
                   [:input {:type "text", :placeholder "Type & Hit Enter..", :class "form-control", :name "q"}]]])
 
 
+(defn navigation-header [menu & components]
+  [:nav {:id "primary-menu"}
+   [:ul {:data-offset "65", :data-speed "1250", :data-easing "easeInOutExpo",
+         :class "one-page-menu"}
+    menu]
+   components])
+
 
 ;=============================== HEADER CONTAINER ===============================
-
-
-
-(def navigation-header-transparent-responsive
-  [:nav {:id "primary-menu"}
-   [:ul {:data-offset "65", :data-speed "1250", :data-easing "easeInOutExpo", :class "one-page-menu"}
-    [:li [:a {:data-href "#wrapper", :href "#"} [:div "Home"]]]
-    [:li [:a {:data-href "#section-about", :href "#"} [:div "About"]]]
-    [:li [:a {:data-href "#section-works", :href "#"} [:div "Works"]]]
-    [:li [:a {:data-href "#section-services", :href "#"} [:div "Services"]]]
-    [:li [:a {:data-href "#section-blog", :href "#"} [:div "Blog"]]]
-    [:li [:a {:data-href "#section-contact", :href "#"} [:div "Contact"]]]]])
-
-(def navigation-header-plain
-  [:nav {:id "primary-menu"}
-   [:ul {:class "one-page-menu"}
-    [:li {:class "current"} [:a {:data-href "#section-home", :href "#"} [:div "Home"]]]
-    [:li [:a {:data-href "#section-features", :href "#"} [:div "Directory"]]]
-    [:li [:a {:data-href "#section-pricing", :href "#"} [:div "Profile"]]]]
-   search-bar])
 
 (defn container-header-light
   ([logo navigation]

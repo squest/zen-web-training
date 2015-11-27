@@ -190,9 +190,12 @@
           components/javascript]
 
          [:body {:class "stretched"}
+          [:title "Zenius Prestasi | Tempat latihan soal, for those who can take the challenge."]
+
           [:div {:class "clearfix", :id "wrapper"}
            (components/container-header-light
-             components/ZP-logo components/navigation-header-plain "transparent-header dark")
+             components/ZP-logo
+             (components/navigation-header components/public-menu) "transparent-header dark")
 
            "<!-- Slider\n\t\t============================================= -->"
            [:section {:class "full-screen", :id "slider"}

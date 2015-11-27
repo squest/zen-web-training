@@ -102,9 +102,11 @@
          [:body {:class "stretched side-panel-left"}
 
           [:div {:class "clearfix", :id "wrapper"}
+           [:title "Latihan Soal | Zenius Prestasi"]
+
            (components/container-header-light
-             components/fake-logo components/navigation-header-plain)
-           [:title "Quiz | Quitter"]]
+             components/fake-logo
+             (components/navigation-header components/do-DP-menu components/search-bar))]
 
           (components/has-side-panel rec-learning directory )
 
