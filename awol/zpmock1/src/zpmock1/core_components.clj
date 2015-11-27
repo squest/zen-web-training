@@ -135,7 +135,7 @@
     [:h3 {:style "margin-bottom: 5px;"} "Title of the Problem"]
     [:p {:style "margin-bottom: 20px;"} "Sub-bab atau materi dari soal"]
     [:ol {:class "breadcrumb", :style "margin-bottom: 5px;"}
-     [:li [:a {:href "#"} "Rekomendasi Belajar"]]
+     [:li [:a {:class "side-panel-trigger button-reveal" , :href "#"} "Rekomendasi Belajar"]]
      [:li [:a {:href "#"} "Browse Soal"]]]]])
 
 

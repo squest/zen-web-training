@@ -11,23 +11,16 @@
    [:h4 "Problems Directory"]
    [:nav {:class "nav-tree nobottommargin"}
     [:ul
-     [:li [:a {:href "#"} [:i {:class "icon-bolt2"}] "Features"]
-      [:ul
-       [:li [:a {:href "#"} "Sliders"]]
-       [:li [:a {:href "#"} "Widgets"]]
-       [:li [:a {:href "#"} "Events"]]
-       [:li [:a {:href "#"} "Headers"]]]]
-     [:li [:a {:href "#"} [:i {:class "icon-briefcase"}] "Portfolio"]
-      [:ul
-       [:li [:a {:href "#"} "Grid"]
-        [:ul
-         [:li [:a {:href "#"} "3 Columns"]]
-         [:li [:a {:href "#"} "4 Columns"]]
-         [:li [:a {:href "#"} "5 Columns"]]]]
+     [:li [:a {:href "#"} [:i {:class "icon-bolt2"}] "Math"]
+      [:ul [:li [:a {:href "#"} "Algebra"]]
+       [:li [:a {:href "#"} "Matrix"]]]]
+     [:li [:a {:href "#"} [:i {:class "icon-briefcase"}] "Physics"]
+      [:ul [:li [:a {:href "#"} "Grid"]
+        [:ul [:li [:a {:href "#"} "3 Columns"]]
+         [:li [:a {:href "#"} "4 Columns"]]]]
        [:li [:a {:href "#"} "Masonry"]]
-       [:li [:a {:href "#"} "Loading Styles"]]
-       [:li [:a {:href "#"} "Single"]]]]
-     [:li [:a {:href "#"} [:i {:class "icon-file-text"}] "About"]
+       [:li [:a {:href "#"} "Loading Styles"]]]]
+     [:li [:a {:href "#"} [:i {:class "icon-file-text"}] "English"]
       [:ul
        [:li [:a {:href "#"} "Company"]]
        [:li [:a {:href "#"} "Team"]]
@@ -60,8 +53,9 @@
     [:i {:class "icon-instagram"}] [:i {:class "icon-instagram"}]]])
 
 (def prob-title
-  [:div {:class "entry-content"}
-   [:h2 {:class "highlight-me"} "Title of Problem"]])
+  [:div {:class "container clearfix"}
+   [:h3 {:style "margin-bottom: 5px;"} "Title of the Problem"]
+   [:p {:style "margin-bottom: 20px;"} "Sub-bab atau materi dari soal"]])
 
 (def prob-image
   [:div {:class "entry-image"}
@@ -120,34 +114,30 @@
           (components/has-side-panel rec-learning rec-learn directory)
 
           [:section {:id "content"}
-           [:div {:class "content-wrap", :style "padding-top: 40px; padding-bottom: 20px;"}
+           [:div {:class "content-wrap", :style "padding-top: 20px; padding-bottom: 20px;"} ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
+            prob-title]
 
-            [:div {:class "container clearfix"}
+           [:section {:id "content"}
+            [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"} ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
+             (components/tabs (problem prob-image prob-question prob-option))]]
 
-             [:div {:class "content-wrap", :style "padding-top: 20px; padding-bottom: 20px;"} ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
-              prob-title]
+           [:div {:class "col-md-2 bottommargin"}
+            (components/open-sider "Rekomendasi Belajar" "icon-signal" "button-yellow button-light button-mini")
+            (components/open-sider "Browse Soal" "" "button-leaf button-light button-mini")]
 
-             [:section {:id "content"}
-              [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"} ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
-               (components/tabs (problem prob-image prob-question prob-option))]]]
-
-            [:div {:class "col-md-2 bottommargin"}
-             (components/open-sider "Recommendations" "icon-signal" "button-yellow button-light button-mini")
-             (components/open-sider "Directory" "" "button-leaf button-light button-mini")]
-
-            [:div {:class "widget widget_links clearfix", :id "shortcodes"}
-             [:h4 {:class "highlight-me"} "Problems Directory"]
-             [:ul
-              [:li [:a {:href "problems.html"}
-                    [:div "Math"]]]
-              [:li [:a {:href "#"}
-                    [:div "Physics"]]]
-              [:li [:a {:href "#"}
-                    [:div "Biology"]]]
-              [:li [:a {:href "#"}
-                    [:div "English"]]]
-              [:li [:a {:href "#"}
-                    [:div "History"]]]]]]]]
+           [:div {:class "widget widget_links clearfix", :id "shortcodes"}
+            [:h4 {:class "highlight-me"} "Problems Directory"]
+            [:ul
+             [:li [:a {:href "problems.html"}
+                   [:div "Math"]]]
+             [:li [:a {:href "#"}
+                   [:div "Physics"]]]
+             [:li [:a {:href "#"}
+                   [:div "Biology"]]]
+             [:li [:a {:href "#"}
+                   [:div "English"]]]
+             [:li [:a {:href "#"}
+                   [:div "History"]]]]]]]
 
          "<!-- Footer Scripts\n\t============================================= -->" "\n\t"
          [:script {:src "../js/functions.js", :type "text/javascript"}]])))
