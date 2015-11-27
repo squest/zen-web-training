@@ -74,7 +74,7 @@
        [:i {:class "icon-ok-right"}] "Submit answer"]]
      [:div {:class "center"}
       [:p {:style "margin-bottom: 0px;"} "I'm not sure with my answer yet."]
-      [:a {:class "button button-rounded button-3d button-large button-reveal button-large button-light button-bright-yellow tright", :style "margin-top: 0px;", :href "#"}
+      [:a {:class "button button-rounded button-3d button-large button-reveal button-large button-light button-bright-yellow", :style "margin-top: 0px;", :href "#"}
        [:i {:class "icon-signal"}]
        [:span "RECOMMENDED LEARNING"]]]]]])
 

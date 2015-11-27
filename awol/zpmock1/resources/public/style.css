@@ -2524,7 +2524,7 @@ body.side-push-panel { overflow-x: hidden; }
 	top: 0;
 	right: -300px;
 	z-index: 399;
-	width: 700px;
+	width: 80%;
 	height: 100%;
 	background-color: #F5F5F5;
 	overflow: scroll;
@@ -2532,7 +2532,7 @@ body.side-push-panel { overflow-x: hidden; }
 }
 
 body.side-panel-left #side-panel {
-	left: -700px;
+	left: -80%;
 	right: auto;
 }
 
