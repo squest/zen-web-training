@@ -186,7 +186,8 @@
         [:html {:lang "en-US", :dir "ltr"}
          [:head
           components/links
-          components/style]
+          components/style
+          components/javascript]
 
          [:body {:class "stretched"}
           [:div {:class "clearfix", :id "wrapper"}

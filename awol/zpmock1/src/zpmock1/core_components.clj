@@ -3,18 +3,12 @@
 (def links
   (list [:meta {:content "text/html; charset=utf-8", :http-equiv "content-type"}]
         [:meta {:content "SemiColonWeb", :name "author"}]))
+
 (def style
   (list [:link {:type "text/css", :rel "stylesheet", :href "http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:300,400,500,700"}]
         [:link {:type "text/css", :href "../css/bootstrap.css", :rel "stylesheet"}]
         [:link {:type "text/css", :href "../style.css", :rel "stylesheet"}]
 
-        [:link {:type "text/css", :rel "stylesheet", :href "http://fonts.googleapiscom/css?family=Source+Sans+Pro:300,400,600,700|Roboto:300,400,500,700"}]
-        [:link {:type "text/css", :href "../css/bootstrap.css", :rel "stylesheet"}]
-        [:link {:type "text/css", :href "../style.css", :rel "stylesheet"}]
-
-        "<!-- One Page Module Specific Stylesheet -->"
-        [:link {:type "text/css", :href "onepage.css", :rel "stylesheet"}]
-        "<!-- / -->"
         [:link {:type "text/css", :href "../css/dark.css", :rel "stylesheet"}]
         [:link {:type "text/css", :href "../css/font-icons.css", :rel "stylesheet"}]
         [:link {:type "text/css", :href "css/et-line.css", :rel "stylesheet"}]
@@ -24,12 +18,15 @@
         [:link {:type "text/css", :href "../css/responsive.css", :rel "stylesheet"}]
         [:meta {:content "width=device-width, initial-scale=1", :name "viewport"}]
 
+        "<!-- One Page Module Specific Stylesheet -->"
+        [:link {:type "text/css", :href "onepage.css", :rel "stylesheet"}]
+
         "<!--[if lt IE 9]>
         <script src=\"http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js\"></script>
-        <![endif]-->"
+        <![endif]-->"))
 
-        "<!-- External JavaScripts\n\t============================================= -->"
-        [:script {:src "../js/jquery.js", :type "text/javascript"}]
+(def javascript
+  (list [:script {:src "../js/jquery.js", :type "text/javascript"}]
         [:script {:src "../js/plugins.js", :type "text/javascript"}]))
 
 (def logo-header
