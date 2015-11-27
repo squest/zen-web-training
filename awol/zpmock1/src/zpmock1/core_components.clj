@@ -100,7 +100,7 @@
 
 (defn has-side-panel [& content]
   (list [:div {:class "body-overlay"}]
-        [:div {:class "dark", :id "side-panel"}
+        [:div {:class " ", :id "side-panel"} ;class can be "dark"
          [:div {:class "side-panel-trigger", :id "side-panel-trigger-close"}
           [:a {:href "#"} [:i {:class "icon-line-cross"}]]]
          [:div {:class "side-panel-wrap"}

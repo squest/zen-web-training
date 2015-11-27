@@ -2524,15 +2524,15 @@ body.side-push-panel { overflow-x: hidden; }
 	top: 0;
 	right: -300px;
 	z-index: 399;
-	width: 300px;
+	width: 700px;
 	height: 100%;
 	background-color: #F5F5F5;
-	overflow: hidden;
+	overflow: scroll;
 	-webkit-backface-visibility: hidden;
 }
 
 body.side-panel-left #side-panel {
-	left: -300px;
+	left: -700px;
 	right: auto;
 }
 
@@ -2550,7 +2550,7 @@ body.side-panel-left.side-push-panel.stretched #header.sticky-header .container 
 	top: 0;
 	left: 0;
 	bottom: 0;
-	width: 330px;
+	width: 100%;
 	height: 100%;
 	overflow: auto;
 	padding: 50px 70px 50px 40px;
