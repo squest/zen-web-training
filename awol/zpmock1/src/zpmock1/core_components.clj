@@ -29,36 +29,92 @@
   (list [:script {:src "../js/jquery.js", :type "text/javascript"}]
         [:script {:src "../js/plugins.js", :type "text/javascript"}]))
 
-(def logo-header
-  [:div {:id "logo"}
-   [:a {:data-dark-logo "images/ZPlogo.png", :class "standard-logo", :href "index.html"}
-    [:img {:alt "Canvas Logo", :src "images/ZPlogo.png"}]]
-   [:a {:data-dark-logo "images/ZPlogo@2x.png", :class "retina-logo", :href "index.html"}
-    [:img {:alt "Canvas Logo", :src "images/ZPlogo@2x.png"}]]])
 
-(def navigation-light-header
+;=============================== HEADER LOGO ===============================
+
+(defn logo-header
+  ([smaller] [:div {:id "logo"}
+              [:a {:data-dark-logo smaller, :class "standard-logo", :href "index.html"}
+               [:img {:src smaller}]]])
+  ([smaller bigger] [:div {:id "logo"}
+                     [:a {:data-dark-logo smaller, :class "standard-logo", :href "index.html"}
+                      [:img {:src smaller}]]
+                     [:a {:data-dark-logo bigger, :class "retina-logo", :href "index.html"}
+                      [:img {:src bigger}]]]))
+
+(def ZP-logo (logo-header "images/ZPlogo.png" "images/ZPlogo@2x.png"))
+(def fake-logo (logo-header "images/performance.png"))
+
+;=============================== HEADER MENU ===============================
+(def search-bar [:div {:id "top-search"}
+                 [:a {:id "top-search-trigger", :href "#"}
+                  [:i {:class "icon-search3"}]
+                  [:i {:class "icon-line-cross"}]]
+                 [:form {:method "get", :action "search.html"}
+                  [:input {:type "text", :placeholder "Type & Hit Enter..", :class "form-control", :name "q"}]]])
+
+
+
+;=============================== HEADER CONTAINER ===============================
+
+
+
+(def navigation-header-transparent-responsive
   [:nav {:id "primary-menu"}
    [:ul {:data-offset "65", :data-speed "1250", :data-easing "easeInOutExpo", :class "one-page-menu"}
-    [:li [:a {:data-href "#wrapper", :href "#"}
-      [:div "Home"]]]
-    [:li [:a {:data-href "#section-about", :href "#"}
-      [:div "About"]]]
-    [:li [:a {:data-href "#section-works", :href "#"}
-      [:div "Works"]]]
-    [:li [:a {:data-href "#section-services", :href "#"}
-      [:div "Services"]]]
-    [:li [:a {:data-href "#section-blog", :href "#"}
-      [:div "Blog"]]]
-    [:li [:a {:data-href "#section-contact", :href "#"}
-      [:div "Contact"]]]]])
+    [:li [:a {:data-href "#wrapper", :href "#"} [:div "Home"]]]
+    [:li [:a {:data-href "#section-about", :href "#"} [:div "About"]]]
+    [:li [:a {:data-href "#section-works", :href "#"} [:div "Works"]]]
+    [:li [:a {:data-href "#section-services", :href "#"} [:div "Services"]]]
+    [:li [:a {:data-href "#section-blog", :href "#"} [:div "Blog"]]]
+    [:li [:a {:data-href "#section-contact", :href "#"} [:div "Contact"]]]]])
 
-(def header-light-public
-  [:header {:data-sticky-offset "0", :data-sticky-class "not-dark", :class "full-header dark transparent-header static-sticky", :id "header"}
-   [:div {:id "header-wrap"}
-    [:div {:class "container clearfix"}
-     [:div {:id "primary-menu-trigger"}
-      [:i {:class "icon-reorder"}]]
+(def navigation-header-plain
+  [:nav {:id "primary-menu"}
+   [:ul {:class "one-page-menu"}
+    [:li {:class "current"} [:a {:data-href "#section-home", :href "#"} [:div "Home"]]]
+    [:li [:a {:data-href "#section-features", :href "#"} [:div "Directory"]]]
+    [:li [:a {:data-href "#section-pricing", :href "#"} [:div "Profile"]]]]
+   search-bar])
 
-     logo-header
-     navigation-light-header]]])
+(defn container-header-light
+  ([logo navigation]
+   [:header {:id "header", :data-sticky-offset "0",
+             :class "full-header static-sticky"}
+    [:div {:id "header-wrap"} [:div {:class "container clearfix"}
+                               [:div {:id "primary-menu-trigger"} [:i {:class "icon-reorder"}]]
+                               logo
+                               navigation]]])
+
+  ([logo navigation transparent]
+   [:header {:id "header", :data-sticky-offset "0", :data-sticky-class "not-dark",
+             :class (str "full-header static-sticky" " " transparent)}
+    [:div {:id "header-wrap"} [:div {:class "container clearfix"}
+                               [:div {:id "primary-menu-trigger"} [:i {:class "icon-reorder"}]]
+                               logo
+                               navigation]]]))
+
+
+;=============================== SIDE PANEL ===============================
+
+(defn has-side-panel [& content]
+  (list [:div {:class "body-overlay"}]
+        [:div {:class "dark", :id "side-panel"}
+         [:div {:class "side-panel-trigger", :id "side-panel-trigger-close"}
+          [:a {:href "#"} [:i {:class "icon-line-cross"}]]]
+         [:div {:class "side-panel-wrap"}
+          content]]))
+
+
+(defn open-sider [name icon & button-style]
+  [:section {:id "content"}
+   [:div {:class "container"}
+    [:a {:class (str "button button-rounded side-panel-trigger button-reveal" " " (first button-style)), :href "#"}
+     [:i {:class icon}]
+     [:span name]]]])
+
+
+
+
+
 

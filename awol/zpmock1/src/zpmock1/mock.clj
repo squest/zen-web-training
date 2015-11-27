@@ -191,7 +191,8 @@
 
          [:body {:class "stretched"}
           [:div {:class "clearfix", :id "wrapper"}
-           components/header-light-public
+           (components/container-header-light
+             components/ZP-logo components/navigation-header-plain "transparent-header dark")
 
            "<!-- Slider\n\t\t============================================= -->"
            [:section {:class "full-screen", :id "slider"}

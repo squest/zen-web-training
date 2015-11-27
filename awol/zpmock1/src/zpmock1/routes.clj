@@ -11,6 +11,7 @@
   (routes
     (GET "/" req (land/home))
     (GET "/home" req (land/home))
+    (GET "/quiz" req (dp/do-quiz))
 
 
     (resources "public/")
