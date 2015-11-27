@@ -35,9 +35,15 @@
        [:li [:a {:href "#"} "FAQs"]]]] ]]])
 
 (def rec-learning
-  [:div {:class "widget clearfix", :id "w-video"}
-   [:h4 {:class "highlight-me"} "Recommended Learning"]
-   [:iframe {:width "500", :height "250", :src "http://player.vimeo.com/video/103927232"}]])
+  [:h4 {:class "highlight-me uppercase"} "Recommended Learning"
+   [:div {:class "fluid-width-video-wrapper", :style "padding-top: 56.25%;"}
+    [:iframe {:frameborder "0", :src "http://www.youtube.com/embed/SZEflIVnhH8", :id "fitvid264630"}]]])
+
+(def rec-learn
+  [:div {:class "widget widget_links clearfix", :id "shortcodes"}
+   [:h4 {:class "highlight-me"} "Related to Current Problem"
+    [:div {:class "fluid-width-video-wrapper", :style "padding-top: 56.25%;"}
+     [:iframe {:frameborder "0", :src "http://www.youtube.com/embed/SZEflIVnhH8", :id "fitvid264630"}]]]])
 
 (def prob-title
   [:div {:class "entry-content"}
@@ -61,22 +67,25 @@
    [:li {:class "active"} [:a {:href "#"} "Black"]]
    [:li [:a {:href "#"} "Sorry I'm colour blind"]]])
 
-(def problem
-  [:div {:class "widget clearfix", :id "text"}
-   [:div {:class "col-md-12"}
-    [:div {:class "col-md-5"} prob-image]
-    [:div {:class "col-md-7"} prob-question]]
-   [:div {:class "col-md-12"}
-    [:form {:class "notopmargin nobottommargin", :role "form", :action "#"}
-     prob-option
-     [:span {:class "input-group-btn topmargin center"}
-      [:button {:type "submit", :class "button button-small button-dark button-rounded", :style "margin-bottom: 15px;", :href "#"}
-       [:i {:class "icon-ok-right"}] "Submit answer"]]
-     [:div {:class "center"}
-      [:p {:style "margin-bottom: 0px;"} "I'm not sure with my answer yet."]
-      [:a {:class "button button-rounded button-3d button-large button-reveal button-large button-light button-bright-yellow", :style "margin-top: 0px;", :href "#"}
-       [:i {:class "icon-signal"}]
-       [:span "RECOMMENDED LEARNING"]]]]]])
+(defn problem
+  ([image question option] [:div {:class "widget clearfix", :id "text"}
+                            [:form {:class "col-md-12"}
+                             [:div {:class "col-md-11"}
+                              [:div {:class "col-md-5"} image]
+                              [:div {:class "col-md-7"} question
+                               [:div {:class "notopmargin nobottommargin", :role "form", :action "#"} option]]]
+
+                             [:div {:class "col-md-1"} [:br social]]
+
+                             [:span {:class "input-group-btn topmargin center"}
+                              [:button {:type "submit", :class "button button-small button-dark button-rounded", :style "margin-bottom: 15px;", :href "#"}
+                               [:i {:class "icon-ok-right"}] "Submit answer"]]
+                             [:div {:class "center"}
+                              [:p {:style "margin-bottom: 0px;"} "I'm not sure with my answer yet."]
+                              [:a {:class "button button-rounded button-3d button-large button-reveal button-large button-light button-bright-yellow", :style "margin-top: 0px;", :href "#"}
+                               [:i {:class "icon-signal"}]
+                               [:span "RECOMMENDED LEARNING"]]]]]))
+
 
 (def social
   [:div {:class "widget quick-contact-widget clearfix", :id "s-icons"}
@@ -108,7 +117,7 @@
              components/fake-logo
              (components/navigation-header components/do-DP-menu components/search-bar))]
 
-          (components/has-side-panel rec-learning directory )
+          (components/has-side-panel rec-learning rec-learn directory)
 
           [:section {:id "content"}
            [:div {:class "content-wrap", :style "padding-top: 40px; padding-bottom: 20px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
@@ -135,10 +144,63 @@
                      [:div "History"]]]]]]
 
             [:div {:class "col-md-10 bottommargin"}
-             [:div {:class "col-md-11 bottommargin"}
-              problem]
-             [:div {:class "col-md-1 bottommargin"}
-              [:br social]]]]]]
+             (problem prob-image prob-question prob-option)]]]]
+
+         "<!-- Footer Scripts\n\t============================================= -->" "\n\t"
+         [:script {:src "../js/functions.js", :type "text/javascript"}]])))
+
+(defn scored-DP
+  ([] (hp/html5
+        [:html {:lang "en-US", :dir "ltr"}
+         [:head
+          components/links
+          components/style
+          components/javascript]
+
+         [:body {:class "stretched side-panel-left"}
+
+          [:div {:class "clearfix", :id "wrapper"}
+           [:title "Scored DP | Zenius Prestasi"]
+
+           (components/container-header-light
+             components/fake-logo
+             (components/navigation-header components/do-DP-menu components/search-bar))]
+
+          (components/has-side-panel rec-learning rec-learn directory)
+
+          [:section {:id "content"}
+           [:div {:class "content-wrap", :style "padding-top: 20px; padding-bottom: 20px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
+            components/sub-menu
+
+            (problem prob-image prob-question prob-option)]]]
+
+         "<!-- Footer Scripts\n\t============================================= -->" "\n\t"
+         [:script {:src "../js/functions.js", :type "text/javascript"}]])))
+
+(defn scored-DP2
+  ([] (hp/html5
+        [:html {:lang "en-US", :dir "ltr"}
+         [:head
+          components/links
+          components/style
+          components/javascript]
+
+         [:body {:class "stretched side-panel-left"}
+
+          [:div {:class "clearfix", :id "wrapper"}
+           [:title "Scored DP | Zenius Prestasi"]
+
+           (components/container-header-light
+             components/fake-logo
+             (components/navigation-header components/do-DP-menu components/search-bar))]
+
+          (components/has-side-panel rec-learning rec-learn directory)
+
+          [:section {:id "content"}
+           [:div {:class "content-wrap", :style "padding-top: 20px; padding-bottom: 20px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
+            components/page-title
+
+            (problem prob-image prob-question prob-option)]]]
 
          "<!-- Footer Scripts\n\t============================================= -->" "\n\t"
          [:script {:src "../js/functions.js", :type "text/javascript"}]])))
