@@ -4,7 +4,20 @@
     [hiccup.page :as hp]
     [zpmock1.core-components :as components]))
 
+(def header-menu
+  (list [:li [:a {:data-href "#section-home", :href "#"} [:div "Sign Up"]]]
+        [:li [:a {:data-href "#section-home", :href "#"} [:div "Log In"]]]))
 
+;<body class="stretched side-header side-header-right open-header push-wrapper close-header-on-scroll">
+
+;<!-- Document Wrapper  ============================================= -->
+;<div id="wrapper" class="clearfix">
+;<div id="header-trigger"><i class="icon-line-menu"></i><i class="icon-line-cross"></i></div>
+;<!-- Header ============================================= -->
+;<header id="header" class="no-sticky">
+;<div id="header-wrap">
+;<div class="container clearfix">
+;<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
 
 (def directory
   [:div {:class "widget widget_links clearfix", :id "shortcodes"}
@@ -29,8 +42,8 @@
 
 (def rec-learning
   [:h4 {:class "highlight-me uppercase"} "Recommended Learning"
-   [:div {:class "fluid-width-video-wrapper", :style "padding-top: 56.25%;"}
-    [:iframe {:frameborder "0", :src "http://www.youtube.com/embed/SZEflIVnhH8", :id "fitvid264630"}]]])
+   [:div {:class "fluid-width-video-wrapper", :style "padding-top: 34%;"}
+    [:iframe {:frameborder "0",  :src "images/Zenvid.png", :id "fitvid264630"}]]])
 
 (def rec-learn
   [:div {:class "widget widget_links clearfix", :id "shortcodes"}
@@ -109,7 +122,7 @@
 
            (components/container-header-light
              components/fake-logo
-             (components/navigation-header components/do-DP-menu components/search-bar))]
+             (components/navigation-header header-menu components/search-bar))]
 
           (components/has-side-panel rec-learning rec-learn directory)
 
@@ -157,7 +170,7 @@
 
            (components/container-header-light
              components/fake-logo
-             (components/navigation-header components/do-DP-menu components/search-bar))]
+             (components/navigation-header header-menu components/search-bar))]
 
           (components/has-side-panel rec-learning rec-learn directory)
 
@@ -185,7 +198,7 @@
 
            (components/container-header-light
              components/fake-logo
-             (components/navigation-header components/do-DP-menu components/search-bar))
+             (components/navigation-header header-menu components/search-bar))
 
            components/page-title]
 

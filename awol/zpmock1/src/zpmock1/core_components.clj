@@ -1,4 +1,7 @@
-(ns zpmock1.core-components)
+(ns zpmock1.core-components
+  (:require
+    [hiccup.core :as hc]
+    [hiccup.page :as hp]))
 
 (def links
   (list [:meta {:content "text/html; charset=utf-8", :http-equiv "content-type"}]
@@ -33,29 +36,22 @@
 ;=============================== HEADER LOGO ===============================
 
 (defn logo-header
-  ([smaller] [:div {:id "logo"}
-              [:a {:data-dark-logo smaller, :class "standard-logo", :href "index.html"}
+  ([smaller] [:div {:id "logo", :class "nobottomborder"}
+              [:a {:data-dark-logo smaller, :class "standard-logo", :href "landing.html"}
                [:img {:src smaller}]]])
-  ([smaller bigger] [:div {:id "logo"}
-                     [:a {:data-dark-logo smaller, :class "standard-logo", :href "index.html"}
+  ([smaller bigger] [:div {:id "logo", :class "nobottomborder"}
+                     [:a {:data-dark-logo smaller, :class "standard-logo", :href "landing.html"}
                       [:img {:src smaller}]]
-                     [:a {:data-dark-logo bigger, :class "retina-logo", :href "index.html"}
+                     [:a {:data-dark-logo bigger, :class "retina-logo", :href "landing.html"}
                       [:img {:src bigger}]]]))
 
 (def ZP-logo (logo-header "images/ZPlogo.png" "images/ZPlogo@2x.png"))
+(def ZP-short (logo-header "images/ZPshort.png"))
 (def fake-logo (logo-header "images/performance.png"))
 
 ;=============================== HEADER MENU ===============================
 
-(def public-menu
-  (list [:li [:a {:data-href "#section-home", :href "#"} [:div "Home"]]]
-        [:li [:a {:data-href "#section-about", :href "#"} [:div "About"]]]
-        [:li [:a {:data-href "#section-works", :href "#"} [:div "Works"]]]
-        [:li [:a {:data-href "#section-services", :href "#"} [:div "Services"]]]
-        [:li [:a {:data-href "#section-blog", :href "#"} [:div "Blog"]]]
-        [:li [:a {:data-href "#section-contact", :href "#"} [:div "Contact"]]]))
-
-(def do-DP-menu
+(def generic-menu
   (list [:li {:class "current"} [:a {:data-href "#section-home", :href "#"} [:div "Home"]]]
         [:li [:a {:data-href "#section-features", :href "#"} [:div "Directory"]]]
         [:li [:a {:data-href "#section-pricing", :href "#"} [:div "Profile"]]]))
@@ -67,13 +63,16 @@
                  [:form {:method "get", :action "search.html"}
                   [:input {:type "text", :placeholder "Type & Hit Enter..", :class "form-control", :name "q"}]]])
 
+(def notif [:a {:href "landing.html"} [:img {:src "images/icons/Bell.png"}]] )
+
 
 (defn navigation-header [menu & components]
-  [:nav {:id "primary-menu"}
+  [:nav {:id "primary-menu", :class "style-3"}
    [:ul {:data-offset "65", :data-speed "1250", :data-easing "easeInOutExpo",
          :class "one-page-menu"}
     menu]
    components])
+
 
 
 ;=============================== HEADER CONTAINER ===============================
@@ -81,7 +80,7 @@
 (defn container-header-light
   ([logo navigation]
    [:header {:id "header", :data-sticky-offset "0",
-             :class "full-header static-sticky"}
+             :class "full-header"}
     [:div {:id "header-wrap"} [:div {:class "container clearfix"}
                                [:div {:id "primary-menu-trigger"} [:i {:class "icon-reorder"}]]
                                logo
@@ -89,11 +88,67 @@
 
   ([logo navigation transparent]
    [:header {:id "header", :data-sticky-offset "0", :data-sticky-class "not-dark",
-             :class (str "full-header static-sticky" " " transparent)}
+             :class (str "full-header" " " transparent)}
     [:div {:id "header-wrap"} [:div {:class "container clearfix"}
                                [:div {:id "primary-menu-trigger"} [:i {:class "icon-reorder"}]]
                                logo
                                navigation]]]))
+
+(defn container-header-light
+  ([logo navigation]
+   [:header {:id "header", :data-sticky-offset "0",
+             :class "full-header"}
+    [:div {:id "header-wrap"} [:div {:class "container clearfix"}
+                               [:div {:id "primary-menu-trigger"} [:i {:class "icon-reorder"}]]
+                               logo
+                               navigation]]])
+
+  ([logo navigation transparent]
+   [:header {:id "header", :data-sticky-offset "0", :data-sticky-class "not-dark",
+             :class (str "full-header" " " transparent)}
+    [:div {:id "header-wrap"} [:div {:class "container clearfix"}
+                               [:div {:id "primary-menu-trigger"} [:i {:class "icon-reorder"}]]
+                               logo
+                               navigation]]]))
+
+
+;=============================== MODAL ===============================
+(def modal-in-page
+  [:style ".header-login-trigger"
+   "float: right              ;
+   width: 20px                ;
+   height: 20px               ;
+   line-height: 20px          ;
+   font-size: 20px            ;
+   text-align: center         ;
+   margin: 40px 0 40px 10px   ;
+   color: #222                ;
+   -webkit-transition: margin .4s ease        ;
+   -o-transition: margin .4s ease             ;
+   transition: margin .4s ease                ;}
+   .header-login-trigger:hover {color: #666 ;}
+   #header.sticky-header.header-login-trigger{margin: 20px 0 20px 10px ;}"])
+
+(def modal-login                                          ;in :body
+  [:div {:class "content-wrap"}
+   [:div {:id "modal-login-form", :class "modal1 mfp-hide"}
+    [:div {:style "background-color: #FFF; max-width: 400px;", :class "block divcenter col-padding"}
+     [:h4 {:class "uppercase ls1"} "Login to your Account"]
+     [:form {:style "max-width: 300px;", :class "nobottommargin clearfix", :action "#"}
+      [:div {:class "col_full"}
+       [:label {:class "capitalize t600"} "Username or Email:"]
+       [:input {:type "email", :class "sm-form-control", :name "template-op-form-email", :id "template-op-form-email"}]]
+      [:div {:class "col_full"}
+       [:label {:class "capitalize t600"} "Password:"]
+       [:input {:type "password", :class "sm-form-control", :name "template-op-form-password", :id "template-op-form-password"}]]
+      [:div {:class "col_full nobottommargin"}
+       [:div {:class "row"}
+        [:div {:class "col-xs-6"}
+         [:button {:value "submit", :class "button button-rounded button-small button-dark nomargin", :type "submit"} "Login"]]
+        [:div {:class "col-xs-6"}
+         [:p {:class "nobottommargin tright"}
+          [:small {:class "t300"}
+           [:em [:a {:href "#"} "Forgot Password?"]]]]]]]]]]])
 
 
 ;=============================== SIDE PANEL ===============================

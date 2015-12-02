@@ -4,6 +4,10 @@
     [hiccup.page :as hp]
     [zpmock1.core-components :as components]))
 
+(def header-menu
+  (list [:li [:a {:data-href "#section-home", :href "#"} [:div "Sign Up"]]]
+        [:li [:a {:data-href "#section-home", :href "#"} [:div "Log In"]]]))
+
 (def section-CTArankprogress
   (list [:p {:style "max-width: 800px;", :class "lead divcenter bottommargin"} "Already have an account?"]
         [:h2 {:style "max-width: 700px; font-size: 50px;", :class "divcenter bottommargin font-body"}
@@ -181,7 +185,7 @@
                                               [:i {:class "icon-angle-right"}]]]]]]]]]])
 
 
-(defn home
+(defn land
   ([] (hp/html5
         [:html {:lang "en-US", :dir "ltr"}
          [:head
@@ -195,7 +199,7 @@
           [:div {:class "clearfix", :id "wrapper"}
            (components/container-header-light
              components/ZP-logo
-             (components/navigation-header components/public-menu) "transparent-header dark")
+             (components/navigation-header header-menu) "transparent-header dark")
 
            "<!-- Slider\n\t\t============================================= -->"
            [:section {:class "full-screen", :id "slider"}
