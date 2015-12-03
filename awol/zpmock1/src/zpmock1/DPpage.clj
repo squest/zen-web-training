@@ -111,6 +111,7 @@
   ([] (hp/html5
         [:html {:lang "en-US", :dir "ltr"}
          [:head
+          (components/font 2)
           components/links
           components/style
           components/javascript]
@@ -159,6 +160,7 @@
   ([] (hp/html5
         [:html {:lang "en-US", :dir "ltr"}
          [:head
+          (components/font 2)
           components/links
           components/style
           components/javascript]
@@ -187,6 +189,7 @@
   ([] (hp/html5
         [:html {:lang "en-US", :dir "ltr"}
          [:head
+          (components/font 2)
           components/links
           components/style
           components/javascript]
@@ -198,7 +201,7 @@
 
            (components/container-header-light
              components/fake-logo
-             (components/navigation-header header-menu components/search-bar))
+             (components/navigation-header header-menu))
 
            components/page-title]
 
@@ -207,7 +210,10 @@
           [:section {:id "content"}
            [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
 
-            (problem prob-image prob-question prob-option)]]]
+            (problem prob-image prob-question prob-option)]]
+
+          components/footer]
 
          "<!-- Footer Scripts\n\t============================================= -->" "\n\t"
          [:script {:src "../js/functions.js", :type "text/javascript"}]])))
+

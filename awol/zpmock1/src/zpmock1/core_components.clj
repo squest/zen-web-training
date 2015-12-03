@@ -7,9 +7,12 @@
   (list [:meta {:content "text/html; charset=utf-8", :http-equiv "content-type"}]
         [:meta {:content "SemiColonWeb", :name "author"}]))
 
+(defn font [x]
+  (cond (= x 1) [:link {:type "text/css", :rel "stylesheet", :href "http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"}]
+        (= x 2) [:link {:type "text/css", :rel "stylesheet", :href "http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:300,400,500,700"}]))
+
 (def style
-  (list [:link {:type "text/css", :rel "stylesheet", :href "http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:300,400,500,700"}]
-        [:link {:type "text/css", :href "../css/bootstrap.css", :rel "stylesheet"}]
+  (list [:link {:type "text/css", :href "../css/bootstrap.css", :rel "stylesheet"}]
         [:link {:type "text/css", :href "../style.css", :rel "stylesheet"}]
 
         [:link {:type "text/css", :href "../css/dark.css", :rel "stylesheet"}]
@@ -79,25 +82,8 @@
 
 (defn container-header-light
   ([logo navigation]
-   [:header {:id "header", :data-sticky-offset "0",
-             :class "full-header"}
-    [:div {:id "header-wrap"} [:div {:class "container clearfix"}
-                               [:div {:id "primary-menu-trigger"} [:i {:class "icon-reorder"}]]
-                               logo
-                               navigation]]])
-
-  ([logo navigation transparent]
-   [:header {:id "header", :data-sticky-offset "0", :data-sticky-class "not-dark",
-             :class (str "full-header" " " transparent)}
-    [:div {:id "header-wrap"} [:div {:class "container clearfix"}
-                               [:div {:id "primary-menu-trigger"} [:i {:class "icon-reorder"}]]
-                               logo
-                               navigation]]]))
-
-(defn container-header-light
-  ([logo navigation]
-   [:header {:id "header", :data-sticky-offset "0",
-             :class "full-header"}
+   [:header {:id "header",
+             :class "full-header static-sticky"}
     [:div {:id "header-wrap"} [:div {:class "container clearfix"}
                                [:div {:id "primary-menu-trigger"} [:i {:class "icon-reorder"}]]
                                logo
@@ -251,6 +237,161 @@
               [:div {:id "tabs-31", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-15", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"} "\n\t\t\t\t\t\t\t\t\t"
                [:p "Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus."] "\n\t\t\t\t\t\t\t\t\tDuis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.\n\t\t\t\t\t\t\t\t"] "\n\t\t\t\t\t\t\t\t"
               [:div {:id "tabs-32", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-16", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"} "\n\t\t\t\t\t\t\t\t\tPraesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.\n\t\t\t\t\t\t\t\t"] "\n\n\t\t\t\t\t\t\t"] "\n\n\t\t\t\t\t\t"])
+
+
+
+;=============================== FOOTER ===============================
+
+
+(def footer
+  [:footer {:class "dark", :id "footer"}
+   [:div {:class "container"}
+    [:div {:class "footer-widgets-wrap clearfix"}
+     [:div {:class "col_two_third"}
+      [:div {:class "col_one_third"}
+       [:div {:class "widget clearfix"}
+        [:img {:class "footer-logo", :src "images/footer-widget-logo.png"}]
+        [:p "We believe in "
+         [:strong "Simple"] ", "
+         [:strong "Creative"] " &amp; "
+         [:strong "Flexible"] " Design Standards."]
+        [:div {:style "background: url('images/world-map.png') no-repeat center center; background-size: 100%;"}
+         [:address
+          [:strong "Headquarters:"]
+          [:br] "795 Folsom Ave, Suite 600"
+          [:br] "San Francisco, CA 94107"
+          [:br]]
+         [:abbr {:title "Phone Number"}
+          [:strong "Phone:"]] " (91) 8547 632521"
+         [:br]
+         [:abbr {:title "Fax"}
+          [:strong "Fax:"]] " (91) 11 4752 1433"
+         [:br]
+         [:abbr {:title "Email Address"}
+          [:strong "Email:"]] " info@canvas.com"]]]
+      [:div {:class "col_one_third"}
+       [:div {:class "widget widget_links clearfix"}
+        [:h4 "Blogroll"]
+        [:ul
+         [:li
+          [:a {:href "http://codex.wordpress.org/"} "Documentation"]]
+         [:li
+          [:a {:href "http://wordpress.org/support/forum/requests-and-feedback"} "Feedback"]]
+         [:li
+          [:a {:href "http://wordpress.org/extend/plugins/"} "Plugins"]]
+         [:li
+          [:a {:href "http://wordpress.org/support/"} "Support Forums"]]
+         [:li
+          [:a {:href "http://wordpress.org/extend/themes/"} "Themes"]]
+         [:li
+          [:a {:href "http://wordpress.org/news/"} "WordPress Blog"]]
+         [:li
+          [:a {:href "http://planet.wordpress.org/"} "WordPress Planet"]]]]]
+      [:div {:class "col_one_third col_last"}
+       [:div {:class "widget clearfix"}
+        [:h4 "Recent Posts"]
+        [:div {:id "post-list-footer"}
+         [:div {:class "spost clearfix"}
+          [:div {:class "entry-c"}
+           [:div {:class "entry-title"}
+            [:h4
+             [:a {:href "#"} "Lorem ipsum dolor sit amet, consectetur"]]]
+           [:ul {:class "entry-meta"}
+            [:li "10th July 2014"]]]]
+         [:div {:class "spost clearfix"}
+          [:div {:class "entry-c"}
+           [:div {:class "entry-title"}
+            [:h4
+             [:a {:href "#"} "Elit Assumenda vel amet dolorum quasi"]]]
+           [:ul {:class "entry-meta"}
+            [:li "10th July 2014"]]]]
+         [:div {:class "spost clearfix"}
+          [:div {:class "entry-c"}
+           [:div {:class "entry-title"}
+            [:h4
+             [:a {:href "#"} "Debitis nihil placeat, illum est nisi"]]]
+           [:ul {:class "entry-meta"}
+            [:li "10th July 2014"]]]]]]]]
+     [:div {:class "col_one_third col_last"}
+      [:div {:style "margin-bottom: -20px;", :class "widget clearfix"}
+       [:div {:class "row"}
+        [:div {:class "col-md-6 bottommargin-sm"}
+         [:div {:class "counter counter-small"}
+          [:span {:data-comma "true", :data-speed "3000", :data-refresh-interval "80", :data-to "15065421", :data-from "50"}]]
+         [:h5 {:class "nobottommargin"} "Total Downloads"]]
+        [:div {:class "col-md-6 bottommargin-sm"}
+         [:div {:class "counter counter-small"}
+          [:span {:data-comma "true", :data-speed "2000", :data-refresh-interval "50", :data-to "18465", :data-from "100"}]]
+         [:h5 {:class "nobottommargin"} "Clients"]]]]
+      [:div {:class "widget subscribe-widget clearfix"}
+       [:h5
+        [:strong "Subscribe"] " to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:"]
+       [:div {:data-notify-type "success", :id "widget-subscribe-form-result"}]
+       [:form {:class "nobottommargin", :method "post", :role "form", :action "include/subscribe.php", :id "widget-subscribe-form"}
+        [:div {:class "input-group divcenter"}
+         [:span {:class "input-group-addon"}
+          [:i {:class "icon-email2"}]]
+         [:input {:type "email", :placeholder "Enter your Email", :class "form-control required email", :name "widget-subscribe-form-email", :id "widget-subscribe-form-email"}]
+         [:span {:class "input-group-btn"}
+          [:button {:type "submit", :class "btn btn-success"} "Subscribe"]]]]
+       [:script {:type "text/javascript"} "$(\"#widget-subscribe-form\").validate({submitHandler: function(form) {$(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');\n\t\t\t\t\t\t\t\t\t\t$(form).ajaxSubmit({\n\t\t\t\t\t\t\t\t\t\t\ttarget: '#widget-subscribe-form-result',\n\t\t\t\t\t\t\t\t\t\t\tsuccess: function() {\n\t\t\t\t\t\t\t\t\t\t\t\t$(form).find('.input-group-addon').find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');\n\t\t\t\t\t\t\t\t\t\t\t\t$('#widget-subscribe-form').find('.form-control').val('');\n\t\t\t\t\t\t\t\t\t\t\t\t$('#widget-subscribe-form-result').attr('data-notify-msg', $('#widget-subscribe-form-result').html()).html('');SEMICOLON.widget.notifications($('#widget-subscribe-form-result'));}});}});"]]
+      [:div {:style "margin-bottom: -20px;", :class "widget clearfix"}
+       [:div {:class "row"}
+        [:div {:class "col-md-6 clearfix bottommargin-sm"}
+         [:a {:style "margin-right: 10px;", :class "social-icon si-dark si-colored si-facebook nobottommargin", :href "#"}
+          [:i {:class "icon-facebook"}]
+          [:i {:class "icon-facebook"}]]
+         [:a {:href "#"}
+          [:small {:style "display: block; margin-top: 3px;"}
+           [:strong "Like us"]
+           [:br] "on Facebook"]]]
+        [:div {:class "col-md-6 clearfix"}
+         [:a {:style "margin-right: 10px;", :class "social-icon si-dark si-colored si-rss nobottommargin", :href "#"}
+          [:i {:class "icon-rss"}]
+          [:i {:class "icon-rss"}]]
+         [:a {:href "#"}
+          [:small {:style "display: block; margin-top: 3px;"}
+           [:strong "Subscribe"]
+           [:br] "to RSS Feeds"]]]]]]]]
+   [:div {:id "copyrights"}
+    [:div {:class "container clearfix"}
+     [:div {:class "col_half"} "Copyrights © 2014 All Rights Reserved by Canvas Inc."
+      [:br]
+      [:div {:class "copyright-links"}
+       [:a {:href "#"} "Terms of Use"] " / "
+       [:a {:href "#"} "Privacy Policy"]]]
+     [:div {:class "col_half col_last tright"}
+      [:div {:class "fright clearfix"}
+       [:a {:class "social-icon si-small si-borderless si-facebook", :href "#"}
+        [:i {:class "icon-facebook"}]
+        [:i {:class "icon-facebook"}]]
+       [:a {:class "social-icon si-small si-borderless si-twitter", :href "#"}
+        [:i {:class "icon-twitter"}]
+        [:i {:class "icon-twitter"}]]
+       [:a {:class "social-icon si-small si-borderless si-gplus", :href "#"}
+        [:i {:class "icon-gplus"}]
+        [:i {:class "icon-gplus"}]]
+       [:a {:class "social-icon si-small si-borderless si-pinterest", :href "#"}
+        [:i {:class "icon-pinterest"}]
+        [:i {:class "icon-pinterest"}]]
+       [:a {:class "social-icon si-small si-borderless si-vimeo", :href "#"}
+        [:i {:class "icon-vimeo"}]
+        [:i {:class "icon-vimeo"}]]
+       [:a {:class "social-icon si-small si-borderless si-github", :href "#"}
+        [:i {:class "icon-github"}]
+        [:i {:class "icon-github"}]]
+       [:a {:class "social-icon si-small si-borderless si-yahoo", :href "#"}
+        [:i {:class "icon-yahoo"}]
+        [:i {:class "icon-yahoo"}]]
+       [:a {:class "social-icon si-small si-borderless si-linkedin", :href "#"}
+        [:i {:class "icon-linkedin"}]
+        [:i {:class "icon-linkedin"}]]]
+      [:div {:class "clear"}]
+      [:i {:class "icon-envelope2"}] " info@canvas.com "
+      [:span {:class "middot"} "·"]
+      [:i {:class "icon-headphones"}] " +91-11-6541-6369 "
+      [:span {:class "middot"} "·"]
+      [:i {:class "icon-skype2"}]]]]])
 
 
 

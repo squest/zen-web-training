@@ -189,6 +189,7 @@
   ([] (hp/html5
         [:html {:lang "en-US", :dir "ltr"}
          [:head
+          (components/font 2)
           components/links
           components/style
           components/javascript]
