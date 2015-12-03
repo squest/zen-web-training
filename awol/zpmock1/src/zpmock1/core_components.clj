@@ -55,9 +55,17 @@
 ;=============================== HEADER MENU ===============================
 
 (def generic-menu
-  (list [:li {:class "current"} [:a {:data-href "#section-home", :href "#"} [:div "Home"]]]
-        [:li [:a {:data-href "#section-features", :href "#"} [:div "Directory"]]]
-        [:li [:a {:data-href "#section-pricing", :href "#"} [:div "Profile"]]]))
+  (list [:li {:class "active"} [:a {:data-href "#section-home", :href "#"} [:div "Game"]]]
+        [:li [:a {:data-href "#section-home", :href "#"} [:div "Friends"]]]
+        [:li [:a {:data-href "#section-home", :href "#"} [:div "Progress"]]
+         [:ul
+          [:li [:a {:data-href "#section-home", :href "#"} [:div "Rank"]]]
+          [:li [:a {:data-href "#section-home", :href "#"} [:div "Chart"]]]
+          [:li [:a {:data-href "#section-home", :href "#"} [:div "History"]]]]]
+        [:li [:a {:data-href "#section-home", :href "#"} [:div "Profile"]]]
+        [:li [:a {:data-href "#section-home", :href "#"} [:div "Notofication"]]]))
+
+
 
 (def search-bar [:div {:id "top-search"}
                  [:a {:id "top-search-trigger", :href "#"}

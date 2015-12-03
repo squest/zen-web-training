@@ -5,8 +5,8 @@
     [zpmock1.core-components :as components]))
 
 (def header-menu
-  (list [:li [:a {:data-href "#section-home", :href "#"} [:div "Sign Up"]]]
-        [:li [:a {:data-href "#section-home", :href "#"} [:div "Log In"]]]))
+  (list [:li {:class "current"} [:a {:data-href "#section-home", :href "#"} [:div "Sign Up"]]]
+        [:li [:a {:data-href "#section-home", :href "#"} [:div "Profile"]]]))
 
 ;<body class="stretched side-header side-header-right open-header push-wrapper close-header-on-scroll">
 
@@ -201,7 +201,7 @@
 
            (components/container-header-light
              components/fake-logo
-             (components/navigation-header header-menu))
+             (components/navigation-header components/generic-menu))
 
            components/page-title]
 
