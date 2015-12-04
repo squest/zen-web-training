@@ -1,8 +1,20 @@
-(ns zpmock1.home
+(ns zpmock1.page-home
   (:require
     [hiccup.core :as hc]
     [hiccup.page :as hp]
-    [zpmock1.core-components :as components]))
+    [zpmock1.component :as comp]
+    [zpmock1.comp-header :as header]))
+
+(def header-menu
+  (list (header/games "current sub-menu")
+        (header/friends "sub-menu")
+        (header/progress "sub-menu")
+        (header/username "current sub-menu")))
+
+(def header
+  (header/container-light
+    header/ZP-short
+    (header/navigation-plain header-menu header/notif)))
 
 (def student-menu
   (list [:li {:class "current"} [:a {:data-href "#section-home", :href "#"} [:div "Home"]]]
@@ -18,27 +30,25 @@
 
         [:html {:lang "en-US", :dir "ltr"}
          [:head
-          (components/font 2)
-          components/links
-          components/style
-          components/javascript]
+          (comp/font 2)
+          comp/links
+          comp/style
+          comp/javascript]
 
          [:body {:class "stretched side-panel-left"}
 
           [:div {:class "clearfix", :id "wrapper"}
            [:title "Profile | Zenius Prestasi"]
 
-           (components/container-header-light
-             components/ZP-short
-             (components/navigation-plain components/generic-menu components/notif))
+           header
 
-           components/page-title]
+           comp/page-title]
 
 
           [:section {:id "content"}
            [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"}]]
 
-          components/footer]
+          comp/footer]
 
          "<!Footer Scripts>"
          [:script {:src "../js/functions.js", :type "text/javascript"}]])))

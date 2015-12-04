@@ -1,12 +1,18 @@
-(ns zpmock1.landing
+(ns zpmock1.page-landing
   (:require
     [hiccup.core :as hc]
     [hiccup.page :as hp]
-    [zpmock1.core-components :as components]))
+    [zpmock1.component :as comp]
+    [zpmock1.comp-header :as header]))
 
 (def header-menu
   (list [:li [:a {:data-href "#section-home", :href "#"} [:div "Sign Up"]]]
         [:li [:a {:data-href "#section-home", :href "#"} [:div "Log In"]]]))
+
+(def header
+  (header/container-light
+    header/ZP-logo
+    (header/navigation-modern header-menu) "transparent-header dark"))
 
 (def section-CTArankprogress
   (list [:p {:style "max-width: 800px;", :class "lead divcenter bottommargin"} "Already have an account?"]
@@ -189,18 +195,17 @@
   ([] (hp/html5
         [:html {:lang "en-US", :dir "ltr"}
          [:head
-          (components/font 2)
-          components/links
-          components/style
-          components/javascript]
+          (comp/font 2)
+          comp/links
+          comp/style
+          comp/javascript]
 
          [:body {:class "stretched"}
           [:title "Zenius Prestasi | Tempat latihan soal, for those who can take the challenge."]
 
           [:div {:class "clearfix", :id "wrapper"}
-           (components/container-header-light
-             components/ZP-logo
-             (components/navigation-modern header-menu) "transparent-header dark")
+
+           header
 
            "<!-- Slider\n\t\t============================================= -->"
            [:section {:class "full-screen", :id "slider"}

@@ -1,12 +1,21 @@
-(ns zpmock1.DPpage
+(ns zpmock1.page-dp
   (:require
     [hiccup.core :as hc]
     [hiccup.page :as hp]
-    [zpmock1.core-components :as components]))
+    [zpmock1.component :as comp]
+    [zpmock1.comp-header :as header]))
 
 (def header-menu
-  (list [:li {:class "current"} [:a {:data-href "#section-home", :href "#"} [:div "Sign Up"]]]
-        [:li [:a {:data-href "#section-home", :href "#"} [:div "Profile"]]]))
+  (list (header/games "current sub-menu")
+        (header/friends "sub-menu")
+        (header/progress "sub-menu")
+        (header/username "current sub-menu")))
+
+(def header
+  (header/container-light
+    header/fake-logo
+    (header/navigation-plain header-menu header/notif)))
+
 
 ;<body class="stretched side-header side-header-right open-header push-wrapper close-header-on-scroll">
 
@@ -111,21 +120,19 @@
   ([] (hp/html5
         [:html {:lang "en-US", :dir "ltr"}
          [:head
-          (components/font 2)
-          components/links
-          components/style
-          components/javascript]
+          (comp/font 2)
+          comp/links
+          comp/style
+          comp/javascript]
 
          [:body {:class "stretched side-panel-left"}
 
           [:div {:class "clearfix", :id "wrapper"}
            [:title "Latihan Soal | Zenius Prestasi"]
 
-           (components/container-header-light
-             components/fake-logo
-             (components/navigation-modern header-menu components/search-bar))]
+           header]
 
-          (components/has-side-panel rec-learning rec-learn directory)
+          (comp/has-side-panel rec-learning rec-learn directory)
 
           [:section {:id "content"}
            [:div {:class "content-wrap", :style "padding-top: 20px; padding-bottom: 20px;"} ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
@@ -133,11 +140,11 @@
 
            [:section {:id "content"}
             [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"} ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
-             (components/tabs (problem prob-image prob-question prob-option))]]
+             (comp/tabs (problem prob-image prob-question prob-option))]]
 
            [:div {:class "col-md-2 bottommargin"}
-            (components/open-sider "Rekomendasi Belajar" "icon-signal" "button-yellow button-light button-mini")
-            (components/open-sider "Browse Soal" "" "button-leaf button-light button-mini")]
+            (comp/open-sider "Rekomendasi Belajar" "icon-signal" "button-yellow button-light button-mini")
+            (comp/open-sider "Browse Soal" "" "button-leaf button-light button-mini")]
 
            [:div {:class "widget widget_links clearfix", :id "shortcodes"}
             [:h4 {:class "highlight-me"} "Problems Directory"]
@@ -160,26 +167,23 @@
   ([] (hp/html5
         [:html {:lang "en-US", :dir "ltr"}
          [:head
-          (components/font 2)
-          components/links
-          components/style
-          components/javascript]
+          (comp/font 2)
+          comp/links
+          comp/style
+          comp/javascript]
 
          [:body {:class "stretched side-panel-left"}
 
           [:div {:class "clearfix", :id "wrapper"}
            [:title "Scored DP | Zenius Prestasi"]
 
+           header]
 
-           (components/container-header-light
-             components/fake-logo
-             (components/navigation-modern header-menu components/search-bar))]
-
-          (components/has-side-panel rec-learning rec-learn directory)
+          (comp/has-side-panel rec-learning rec-learn directory)
 
           [:section {:id "content"}
            [:div {:class "content-wrap", :style "padding-top: 20px; padding-bottom: 20px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
-            components/sub-menu
+            comp/sub-menu
 
             (problem prob-image prob-question prob-option)]]]
 
@@ -191,30 +195,28 @@
 
         [:html {:lang "en-US", :dir "ltr"}
          [:head
-          (components/font 2)
-          components/links
-          components/style
-          components/javascript]
+          (comp/font 2)
+          comp/links
+          comp/style
+          comp/javascript]
 
          [:body {:class "stretched side-panel-left"}
 
           [:div {:class "clearfix", :id "wrapper"}
            [:title "Scored DP 2 | Zenius Prestasi"]
 
-           (components/container-header-light
-             components/ZP-short
-             (components/navigation-plain components/generic-menu components/notif))
+           header]
 
-           components/page-title]
+          [:div comp/page-title]
 
-          (components/has-side-panel rec-learning rec-learn directory)
+          (comp/has-side-panel rec-learning rec-learn directory)
 
           [:section {:id "content"}
            [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
 
             (problem prob-image prob-question prob-option)]]
 
-          components/footer]
+          comp/footer]
 
          "<!Footer Scripts>"
          [:script {:src "../js/functions.js", :type "text/javascript"}]])))
