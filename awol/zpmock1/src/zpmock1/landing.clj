@@ -200,7 +200,7 @@
           [:div {:class "clearfix", :id "wrapper"}
            (components/container-header-light
              components/ZP-logo
-             (components/navigation-header header-menu) "transparent-header dark")
+             (components/navigation-modern header-menu) "transparent-header dark")
 
            "<!-- Slider\n\t\t============================================= -->"
            [:section {:class "full-screen", :id "slider"}

@@ -16,7 +16,6 @@
 (defn student
   ([] (hp/html5
 
-
         [:html {:lang "en-US", :dir "ltr"}
          [:head
           (components/font 2)
@@ -27,18 +26,19 @@
          [:body {:class "stretched side-panel-left"}
 
           [:div {:class "clearfix", :id "wrapper"}
-           [:title "Scored DP | Zenius Prestasi"]
+           [:title "Profile | Zenius Prestasi"]
 
-
+           (components/container-header-light
+             components/fake-logo
+             (components/navigation-plain components/example-menu components/search-bar))
 
            components/page-title]
 
 
-
           [:section {:id "content"}
-           [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
+           [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"}]]
 
-            ]]]
+          components/footer]
 
-         "<!-- Footer Scripts\n\t============================================= -->" "\n\t"
+         "<!Footer Scripts>"
          [:script {:src "../js/functions.js", :type "text/javascript"}]])))

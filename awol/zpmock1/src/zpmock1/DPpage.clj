@@ -123,7 +123,7 @@
 
            (components/container-header-light
              components/fake-logo
-             (components/navigation-header header-menu components/search-bar))]
+             (components/navigation-modern header-menu components/search-bar))]
 
           (components/has-side-panel rec-learning rec-learn directory)
 
@@ -170,9 +170,10 @@
           [:div {:class "clearfix", :id "wrapper"}
            [:title "Scored DP | Zenius Prestasi"]
 
+
            (components/container-header-light
              components/fake-logo
-             (components/navigation-header header-menu components/search-bar))]
+             (components/navigation-modern header-menu components/search-bar))]
 
           (components/has-side-panel rec-learning rec-learn directory)
 
@@ -197,11 +198,11 @@
          [:body {:class "stretched side-panel-left"}
 
           [:div {:class "clearfix", :id "wrapper"}
-           [:title "Scored DP | Zenius Prestasi"]
+           [:title "Scored DP 2 | Zenius Prestasi"]
 
            (components/container-header-light
              components/fake-logo
-             (components/navigation-header components/generic-menu))
+             (components/navigation-modern components/generic-menu components/search-bar))
 
            components/page-title]
 

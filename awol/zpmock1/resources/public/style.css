@@ -1357,8 +1357,8 @@ body:not(.device-sm):not(.device-xs):not(.device-xxs) #primary-menu.style-2.cent
 -----------------------------------------------------------------*/
 
 #primary-menu.style-3 > ul > li > a {
-	height: 40px;
-	line-height: 40px;
+	height: 70px;
+	line-height: 70px;
 	margin: 0px 0;
 	border-radius: 2px;
 }
