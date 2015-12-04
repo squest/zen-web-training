@@ -30,40 +30,51 @@
 (defn games [status]
   [:li {:class status} [:a {:href "#", :class "sf-with-ul"} [:div "Games"]]
    [:ul {:style "display: none;"}
-    [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-stack"}] "Sliders"]]
+    [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-stack"}] "Duel"]]]
+    [:li {:class "sub-menu"} [:a {:href "widgets.html", :class "sf-with-ul"} [:div [:i {:class "icon-gift"}] "Quizzes"]]]
+    [:li [:a {:href "#"} [:div [:i {:class "icon-adjust"}] "References"]]
      [:ul {:style "display: none;"}
-      [:li {:class "sub-menu"} [:a {:href "slider-revolution.html", :class "sf-with-ul"} [:div "Revolution Slider"]]]
-      [:li {:class "sub-menu"} [:a {:href "slider-canvas.html", :class "sf-with-ul"} [:div "Canvas Slider"]]
-       [:ul {:style "display: none;"}
-        [:li [:a {:href "slider-canvas.html"} [:div "Full Width"]]]
-        [:li [:a {:href "slider-canvas-fade.html"} [:div "Fade Transition"]]]
-        [:li [:a {:href "slider-canvas-autoplay.html"} [:div "Autoplay Feature"]]]]]
-      [:li [:a {:href "slider-camera.html"} [:div "Camera Slider"]]]
-      [:li [:a {:href "slider-elastic.html"} [:div "Elastic Slider"]]]
-      [:li [:a {:href "slider-nivo.html"} [:div "Nivo Slider"]]]]]
-    [:li {:class "sub-menu"} [:a {:href "widgets.html", :class "sf-with-ul"} [:div [:i {:class "icon-gift"}] "Widgets"]]
-     [:ul {:style "display: none;"}
-      [:li [:a {:href "widgets.html"} [:div "Links"]]]
-      [:li [:a {:href "widgets.html"} [:div "Flickr Photostream"]]]
-      [:li [:a {:href "widgets.html"} [:div "Dribbble Shots"]]]
-      [:li [:a {:href "widgets.html"} [:div "Instagram Feed"]]]]]
-    [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Headers"]]]
-    [:li [:a {:href "#"} [:div [:i {:class "icon-adjust"}] "Dark Version"]]]]])
+      [:li [:a {:href "widgets.html"} [:div "Video References"]]]
+      [:li [:a {:href "widgets.html"} [:div "Articles"]]]
+      [:li [:a {:href "widgets.html"} [:div "Learning Tracks"]]]]]]])
 
 (defn friends [status]
-  [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div "Friends"]]])
+  [:li {:class status} [:a {:href "#", :class "sf-with-ul"} [:div "Friends"]]
+   [:ul {:style "display: none;"}
+    [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-stack"}] "Social / Timeline"]]]
+    [:li {:class "sub-menu"} [:a {:href "widgets.html", :class "sf-with-ul"} [:div [:i {:class "icon-gift"}] "Friends List"]]
+     [:ul {:style "display: none;"}
+      [:li [:a {:href "widgets.html"} [:div "Profile"]]]
+      [:li [:a {:href "widgets.html"} [:div "Challenge"]]]
+      [:li [:a {:href "widgets.html"} [:div "Compare"]]]]]]])
+
+(defn learning [status]
+  [:li {:class status} [:a {:href "#", :class "sf-with-ul"} [:div "Learnings"]]
+   [:ul {:style "display: none;"}
+    [:li [:a {:href "widgets.html"} [:div "Video References"]]]
+    [:li [:a {:href "widgets.html"} [:div "Articles"]]]
+    [:li [:a {:href "widgets.html"} [:div "Learning Tracks"]]]]])
 
 (defn progress [status]
-  [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div "Progress"]]
+  [:li {:class status} [:a {:href "#", :class "sf-with-ul"} [:div "Progress"]]
    [:ul {:style "display: none;"}
     [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-stack"}] "Rank"]]]
-    [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Chart"]]]
+    [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Progress Tracking / Chart"]]]
+    [:li [:a {:href "#"} [:div [:i {:class "icon-adjust"}] "Spot strengths and weaknesses"]]]
     [:li [:a {:href "#"} [:div [:i {:class "icon-adjust"}] "History"]]]]])
 
-(defn username [status]
-  [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "fa fa-caret-down"}] "username"]]
+(defn kelas [status]
+  [:li {:class status} [:a {:href "#", :class "sf-with-ul"} [:div "Kelas"]]
    [:ul {:style "display: none;"}
-    [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "fa fa-home"}] "Home"]]]
+    [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-stack"}] "Tugas"]]]
+    [:li [:a {:href "#"} [:div [:i {:class "icon-adjust"}] "Latihan Soal"]]]
+    [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Join Kelas"]]]
+    [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Data Kelas"]]]]])
+
+(defn username [status]
+  [:li {:class status} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "fa fa-caret-down"}] "username"]]
+   [:ul {:style "display: none;"}
+    [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "fa fa-home"}] "My Profile"]]]
     [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class " "}] "Setting"]]]
     [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class " "}] "Log Out"]]]]])
 
@@ -101,8 +112,9 @@
              [:span {:class "fa fa-bell", :style  "vertical-align: middle;"}]]])
 
 (def generic-menu
-  (list (games "current sub-menu")
+  (list (games "sub-menu")
         (friends "sub-menu")
+        (learning "sub-menu")
         (progress "sub-menu")
         (username "sub-menu")))
 

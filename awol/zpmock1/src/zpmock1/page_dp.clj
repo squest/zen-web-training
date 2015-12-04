@@ -8,8 +8,10 @@
 (def header-menu
   (list (header/games "current sub-menu")
         (header/friends "sub-menu")
+        (header/learning "sub-menu")
         (header/progress "sub-menu")
-        (header/username "current sub-menu")))
+        (header/kelas "sub-menu")
+        (header/username "sub-menu")))
 
 (def header
   (header/container-light

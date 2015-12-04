@@ -6,9 +6,11 @@
     [zpmock1.comp-header :as header]))
 
 (def header-menu
-  (list (header/games "current sub-menu")
+  (list (header/games "sub-menu")
         (header/friends "sub-menu")
+        (header/learning "sub-menu")
         (header/progress "sub-menu")
+        (header/kelas "sub-menu")
         (header/username "current sub-menu")))
 
 (def header
