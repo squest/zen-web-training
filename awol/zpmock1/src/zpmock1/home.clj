@@ -29,8 +29,8 @@
            [:title "Profile | Zenius Prestasi"]
 
            (components/container-header-light
-             components/fake-logo
-             (components/navigation-plain components/example-menu components/search-bar))
+             components/ZP-short
+             (components/navigation-plain components/generic-menu components/notif))
 
            components/page-title]
 

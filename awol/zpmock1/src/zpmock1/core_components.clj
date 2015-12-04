@@ -24,6 +24,9 @@
         [:link {:type "text/css", :href "../css/responsive.css", :rel "stylesheet"}]
         [:meta {:content "width=device-width, initial-scale=1", :name "viewport"}]
 
+        [:link {:href "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", :rel "stylesheet"}]
+        [:link {:href "/octicons/octicons.css", :rel "stylesheet"}]
+
         "<!-- One Page Module Specific Stylesheet -->"
         [:link {:type "text/css", :href "onepage.css", :rel "stylesheet"}]
 
@@ -62,25 +65,87 @@
 ;=============================== HEADER MENU COMPONENTS===============================
 
 (def generic-menu
-  (list [:li {:class "active"} [:a {:data-href "#section-home", :href "#"} [:div "Game"]]]
-        [:li [:a {:data-href "#section-home", :href "#"} [:div "Friends"]]]
-        [:li [:a {:data-href "#section-home", :href "#"} [:div "Progress"]]
-         [:ul
-          [:li [:a {:data-href "#section-home", :href "#"} [:div "Rank"]]]
-          [:li [:a {:data-href "#section-home", :href "#"} [:div "Chart"]]]
-          [:li [:a {:data-href "#section-home", :href "#"} [:div "History"]]]]]
-        [:li [:a {:data-href "#section-home", :href "#"} [:div "Profile"]]]
-        [:li [:a {:data-href "#section-home", :href "#"} [:div "Notification"]]]))
+  (list [:li {:class "current sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div "Games"]]
+         [:ul {:style "display: none;"}
+          [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-stack"}] "Sliders"]]
+           [:ul {:style "display: none;"}
+            [:li {:class "sub-menu"} [:a {:href "slider-revolution.html", :class "sf-with-ul"} [:div "Revolution Slider"]]]
+            [:li {:class "sub-menu"} [:a {:href "slider-canvas.html", :class "sf-with-ul"} [:div "Canvas Slider"]]
+             [:ul {:style "display: none;"}
+              [:li [:a {:href "slider-canvas.html"} [:div "Full Width"]]]
+              [:li [:a {:href "slider-canvas-fade.html"} [:div "Fade Transition"]]]
+              [:li [:a {:href "slider-canvas-autoplay.html"} [:div "Autoplay Feature"]]]]]
+            [:li [:a {:href "slider-camera.html"} [:div "Camera Slider"]]]
+            [:li [:a {:href "slider-elastic.html"} [:div "Elastic Slider"]]]
+            [:li [:a {:href "slider-nivo.html"} [:div "Nivo Slider"]]]]]
+          [:li {:class "sub-menu"} [:a {:href "widgets.html", :class "sf-with-ul"} [:div [:i {:class "icon-gift"}] "Widgets"]]
+           [:ul {:style "display: none;"}
+            [:li [:a {:href "widgets.html"} [:div "Links"]]]
+            [:li [:a {:href "widgets.html"} [:div "Flickr Photostream"]]]
+            [:li [:a {:href "widgets.html"} [:div "Dribbble Shots"]]]
+            [:li [:a {:href "widgets.html"} [:div "Instagram Feed"]]]]]
+          [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Headers"]]]
+          [:li [:a {:href "#"} [:div [:i {:class "icon-adjust"}] "Dark Version"]]]]]
+
+        [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div "Home"]]
+         [:ul {:style "display: none;"}
+          [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-stack"}] "Sliders"]]
+           [:ul {:style "display: none;"}
+            [:li {:class "sub-menu"} [:a {:href "slider-revolution.html", :class "sf-with-ul"} [:div "Revolution Slider"]]]
+            [:li {:class "sub-menu"} [:a {:href "slider-canvas.html", :class "sf-with-ul"} [:div "Canvas Slider"]]
+             [:ul {:style "display: none;"}
+              [:li [:a {:href "slider-canvas.html"} [:div "Full Width"]]]
+              [:li [:a {:href "slider-canvas-fade.html"} [:div "Fade Transition"]]]
+              [:li [:a {:href "slider-canvas-autoplay.html"} [:div "Autoplay Feature"]]]]]
+            [:li [:a {:href "slider-camera.html"} [:div "Camera Slider"]]]
+            [:li [:a {:href "slider-elastic.html"} [:div "Elastic Slider"]]]
+            [:li [:a {:href "slider-nivo.html"} [:div "Nivo Slider"]]]]]
+          [:li {:class "sub-menu"} [:a {:href "widgets.html", :class "sf-with-ul"} [:div [:i {:class "icon-gift"}] "Widgets"]]
+           [:ul {:style "display: none;"}
+            [:li [:a {:href "widgets.html"} [:div "Links"]]]
+            [:li [:a {:href "widgets.html"} [:div "Flickr Photostream"]]]
+            [:li [:a {:href "widgets.html"} [:div "Dribbble Shots"]]]
+            [:li [:a {:href "widgets.html"} [:div "Instagram Feed"]]]]]
+          [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Headers"]]]
+          [:li [:a {:href "#"} [:div [:i {:class "icon-adjust"}] "Dark Version"]]]]]
+
+        [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div "Friends"]]
+         [:ul {:style "display: none;"}
+          [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-stack"}] "Sliders"]]
+           [:ul {:style "display: none;"}
+            [:li {:class "sub-menu"} [:a {:href "slider-revolution.html", :class "sf-with-ul"} [:div "Revolution Slider"]]]
+            [:li {:class "sub-menu"} [:a {:href "slider-canvas.html", :class "sf-with-ul"} [:div "Canvas Slider"]]
+             [:ul {:style "display: none;"}
+              [:li [:a {:href "slider-canvas.html"} [:div "Full Width"]]]
+              [:li [:a {:href "slider-canvas-fade.html"} [:div "Fade Transition"]]]
+              [:li [:a {:href "slider-canvas-autoplay.html"} [:div "Autoplay Feature"]]]]]
+            [:li [:a {:href "slider-camera.html"} [:div "Camera Slider"]]]
+            [:li [:a {:href "slider-elastic.html"} [:div "Elastic Slider"]]]
+            [:li [:a {:href "slider-nivo.html"} [:div "Nivo Slider"]]]]]
+          [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Headers"]]]
+          [:li [:a {:href "#"} [:div [:i {:class "icon-adjust"}] "Dark Version"]]]]]
+
+        [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div "Progress"]]
+         [:ul {:style "display: none;"}
+          [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-stack"}] "Rank"]]]
+          [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Chart"]]]
+          [:li [:a {:href "#"} [:div [:i {:class "icon-adjust"}] "History"]]]]]
+
+        [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div "Notification"]]
+         [:ul {:style "display: none;"}
+          [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-stack"}] "Rank"]]]
+          [:li [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Chart"]]]
+          [:li [:a {:href "#"} [:div [:i {:class "icon-adjust"}] "History"]]]]]
+
+        [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div "Profile"]]]))
 
 (def example-menu
   (list [:li {:class "sub-menu"} [:a {:href "index.html", :class "sf-with-ul"} [:div "Home"]]
-
          [:ul {:style "display: none;"}
           [:li {:class "sub-menu"} [:a {:href "index-corporate.html", :class "sf-with-ul"} [:div "Home - Corporate"]]
            [:ul {:style "display: none;"}
             [:li [:a {:href "index-corporate.html"} [:div "Corporate - Layout 1"]]]
             [:li [:a {:href "index-corporate-2.html"} [:div "Corporate - Layout 2"]]]]]
-
           [:li {:class "sub-menu"} [:a {:href "index-portfolio.html", :class "sf-with-ul"} [:div "Home - Portfolio"]]
            [:ul {:style "display: none;"}
             [:li [:a {:href "index-portfolio.html"} [:div "Portfolio - Layout 1"]]]
@@ -95,30 +160,12 @@
          [:ul {:style "display: none;"}
           [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-stack"}] "Sliders"]]
            [:ul {:style "display: none;"}
-            [:li {:class "sub-menu"} [:a {:href "slider-revolution.html", :class "sf-with-ul"} [:div "Revolution Slider"]]
-             [:ul {:style "display: none;"}
-              [:li [:a {:href "rs-demo-premium-concept.html"} [:div "Premium Templates"]]]
-              [:li [:a {:href "slider-revolution.html"} [:div "Full Screen"]]]
-              [:li [:a {:href "slider-revolution-fullwidth.html"} [:div "Full Width"]]]]]
+            [:li {:class "sub-menu"} [:a {:href "slider-revolution.html", :class "sf-with-ul"} [:div "Revolution Slider"]]]
             [:li {:class "sub-menu"} [:a {:href "slider-canvas.html", :class "sf-with-ul"} [:div "Canvas Slider"]]
              [:ul {:style "display: none;"}
               [:li [:a {:href "slider-canvas.html"} [:div "Full Width"]]]
               [:li [:a {:href "slider-canvas-fade.html"} [:div "Fade Transition"]]]
               [:li [:a {:href "slider-canvas-autoplay.html"} [:div "Autoplay Feature"]]]]]
-            [:li {:class "sub-menu"} [:a {:href "slider-flex.html", :class "sf-with-ul"} [:div "Flex Slider"]]
-             [:ul {:style "display: none;"}
-              [:li [:a {:href "slider-flex.html"} [:div "Default Layout"]]]
-              [:li [:a {:href "slider-flex-thumbs.html"} [:div "with Thumbs"]]]]]
-            [:li {:class "sub-menu"} [:a {:href "slider-owl.html", :class "sf-with-ul"} [:div "Owl Slider"]]
-             [:ul {:style "display: none;"}
-              [:li [:a {:href "slider-owl-full.html"} [:div "Full Width"]]]
-              [:li [:a {:href "slider-owl.html"} [:div "Boxed Width"]]]
-              [:li [:a {:href "slider-owl-videos.html"} [:div "Video Slider"]]]]]
-            [:li {:class "sub-menu"} [:a {:href "static-parallax.html", :class "sf-with-ul"} [:div "Static Media"]]
-             [:ul {:style "display: none;"}
-              [:li [:a {:href "static-parallax.html"} [:div "Static - Parallax"]]]
-              [:li [:a {:href "static-image.html"} [:div "Static - Image"]]]
-              [:li [:a {:href "static-embed-video.html"} [:div "Static - Embedded Video"]]]]]
             [:li [:a {:href "slider-camera.html"} [:div "Camera Slider"]]]
             [:li [:a {:href "slider-elastic.html"} [:div "Elastic Slider"]]]
             [:li [:a {:href "slider-nivo.html"} [:div "Nivo Slider"]]]]]
@@ -128,29 +175,7 @@
             [:li [:a {:href "widgets.html"} [:div "Flickr Photostream"]]]
             [:li [:a {:href "widgets.html"} [:div "Dribbble Shots"]]]
             [:li [:a {:href "widgets.html"} [:div "Instagram Feed"]]]]]
-          [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Headers"]]
-           [:ul {:style "display: none;"}
-            [:li [:a {:href "header-light.html"} [:div "Light Version"]]]
-            [:li [:a {:href "header-dark.html"} [:div "Dark Version"]]]
-            [:li [:a {:href "header-transparent.html"} [:div "Transparent"]]]
-            [:li {:class "sub-menu"} [:a {:href "header-semi-transparent.html", :class "sf-with-ul"} [:div "Semi Transparent"]]
-             [:ul {:style "display: none;"}
-              [:li [:a {:href "header-semi-transparent.html"} [:div "Light Version"]]]
-              [:li [:a {:href "header-semi-transparent-dark.html"} [:div "Dark Version"]]]]]
-            [:li {:class "sub-menu"} [:a {:href "header-side-left.html", :class "sf-with-ul"} [:div "Left Side Header"]]
-             [:ul {:style "display: none;"}
-              [:li [:a {:href "header-side-left.html"} [:div "Fixed Position"]]]
-              [:li [:a {:href "header-side-left-open.html"} [:div "OnClick Open"]]]
-              [:li [:a {:href "header-side-left-open-push.html"} [:div "Push Content"]]]]]
-            [:li {:class "sub-menu"} [:a {:href "header-side-right.html", :class "sf-with-ul"} [:div "Right Side Header"]]
-             [:ul {:style "display: none;"}
-              [:li [:a {:href "header-side-right.html"} [:div "Fixed Position"]]]
-              [:li [:a {:href "header-side-right-open.html"} [:div "OnClick Open"]]]
-              [:li [:a {:href "header-side-right-open-push.html"} [:div "Push Content"]]]]]
-            [:li [:a {:href "header-floating.html"} [:div "Floating Version"]]]
-            [:li [:a {:href "static-sticky.html"} [:div "Static Sticky"]]]
-            [:li [:a {:href "responsive-sticky.html"} [:div "Responsive Sticky"]]]
-            [:li [:a {:href "logo-changer.html"} [:div "Alternate Logos"]]]]]
+          [:li {:class "sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div [:i {:class "icon-umbrella"}] "Headers"]]]
           [:li [:a {:href "#"} [:div [:i {:class "icon-adjust"}] "Dark Version"]]]]]
 
         [:li {:class "mega-menu sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div "Pages"]]
@@ -158,7 +183,21 @@
           [:ul
            [:li {:class "mega-menu-title sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div "Introduction"]]
             [:ul {:style "display: none;"}
-             [:li [:a {:href "about.html"} [:div "About Us"]]]
+             [:li [:a {:href "about.html"} [:div "About Us"]]
+              [:ul {:style "display: none;"}
+               [:li {:class "sub-menu"} [:a {:href "index-corporate.html", :class "sf-with-ul"} [:div "Home - Corporate"]]
+                [:ul {:style "display: none;"}
+                 [:li [:a {:href "index-corporate.html"} [:div "Corporate - Layout 1"]]]
+                 [:li [:a {:href "index-corporate-2.html"} [:div "Corporate - Layout 2"]]]]]
+               [:li {:class "sub-menu"} [:a {:href "index-portfolio.html", :class "sf-with-ul"} [:div "Home - Portfolio"]]
+                [:ul {:style "display: none;"}
+                 [:li [:a {:href "index-portfolio.html"} [:div "Portfolio - Layout 1"]]]
+                 [:li [:a {:href "index-portfolio-2.html"} [:div "Portfolio - Layout 2"]]]
+                 [:li [:a {:href "index-portfolio-3.html"} [:div "Portfolio - Masonry"]]]]]
+               [:li {:class "sub-menu"} [:a {:href "index-blog.html", :class "sf-with-ul"} [:div "Home - Blog"]]
+                [:ul {:style "display: none;"}
+                 [:li [:a {:href "index-blog.html"} [:div "Blog - Layout 1"]]]
+                 [:li [:a {:href "index-blog-2.html"} [:div "Blog - Layout 2"]]]]]]]
              [:li [:a {:href "about-2.html"} [:div "About Us - Layout 2"]]]]]]
           [:ul
            [:li {:class "mega-menu-title sub-menu"} [:a {:href "#", :class "sf-with-ul"} [:div "Utility"]]
@@ -200,7 +239,9 @@
                  [:form {:method "get", :action "search.html"}
                   [:input {:type "text", :placeholder "Type & Hit Enter..", :class "form-control", :name "q"}]]])
 
-(def notif [:a {:href "landing.html"} [:img {:src "images/icons/Bell.png"}]] )
+(def notif [:div {:id "top-search"}
+            [:a {:href "landing.html"}
+             [:span {:class "fa fa-bell", :style  "vertical-align: middle;"}]]])
 
 
 
@@ -215,7 +256,7 @@
 
 (defn navigation-plain [menu & components]
   [:nav {:class "style-3", :id "primary-menu"}
-   [:ul {:class "sf-js-enabled"}
+   [:ul
     menu]
    components])
 

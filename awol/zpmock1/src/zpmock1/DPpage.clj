@@ -188,6 +188,7 @@
 
 (defn scored-DP2
   ([] (hp/html5
+
         [:html {:lang "en-US", :dir "ltr"}
          [:head
           (components/font 2)
@@ -201,8 +202,8 @@
            [:title "Scored DP 2 | Zenius Prestasi"]
 
            (components/container-header-light
-             components/fake-logo
-             (components/navigation-modern components/generic-menu components/search-bar))
+             components/ZP-short
+             (components/navigation-plain components/generic-menu components/notif))
 
            components/page-title]
 
@@ -215,6 +216,6 @@
 
           components/footer]
 
-         "<!-- Footer Scripts\n\t============================================= -->" "\n\t"
+         "<!Footer Scripts>"
          [:script {:src "../js/functions.js", :type "text/javascript"}]])))
 
