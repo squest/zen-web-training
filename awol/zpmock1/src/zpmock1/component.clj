@@ -39,6 +39,48 @@
         [:script {:src "../js/plugins.js", :type "text/javascript"}]))
 
 
+;=============================== PARTS ===============================
+(def social1
+  [:div {:class "widget quick-contact-widget clearfix", :id "s-icons"}
+   [:a {:title "Facebook", :class "social-icon si-colored si-facebook", :href "#"}
+    [:i {:class "icon-facebook"}] [:i {:class "icon-facebook"}]]
+   [:a {:title "Twitter", :class "social-icon si-colored si-twitter", :href "#"}
+    [:i {:class "icon-twitter"}] [:i {:class "icon-twitter"}]]
+   [:a {:title "Github", :class "social-icon si-colored si-github", :href "#"}
+    [:i {:class "icon-github"}] [:i {:class "icon-github"}]]
+   [:a {:title "Google Plus", :class "social-icon si-colored si-gplus", :href "#"}
+    [:i {:class "icon-gplus"}] [:i {:class "icon-gplus"}]]
+   [:a {:title "Instagram", :class "social-icon si-colored si-instagram", :href "#"}
+    [:i {:class "icon-instagram"}] [:i {:class "icon-instagram"}]]])
+
+(def social2
+  [:div {:class "top-links" :style "font-size: 11px;"}
+   [:ul
+    [:li [:a {:href "#" :style "padding-right: 16px; padding-left: 16px;"} [:span {:class "ts-icon"}
+           [:i {:class "icon-facebook"}]]]]
+    [:li [:a {:href "#" :style "padding-right: 16px; padding-left: 16px;"} [:span {:class "ts-icon"}
+           [:i {:class "icon-twitter"}]]]]
+    [:li [:a {:href "#" :style "padding-right: 16px; padding-left: 16px;"} [:span {:class "ts-icon"}
+           [:i {:class "icon-instagram2"}]]]]]])
+
+(def progress
+  [:div {:class "progress" :style "height: 18px;"}
+   [:div {:style "width: 60%; font-size: 12px; line-height: 14px;", :aria-valuemax "100", :aria-valuemin "0", :aria-valuenow "60", :role "progressbar", :class "progress-bar"} "60%"]])
+
+
+(defn submit
+  ([] [:button {:type "submit", :class "button button button-leaf button-circle", :style "margin-bottom: 15px; margin-top: 0px;", :href "#"}
+       [:i {:class "icon-ok-right"}] "Submit answer"])
+  ([status] [:button {:type "submit", :class "button button-3d button-yellow button-light button-circle", :style "margin-bottom: 15px; margin-top: 0px;", :href "#"}
+             [:i {:class "icon-ok-right"}] "Submit answer"]))
+
+(defn pages [status]
+  [:ul {:class "pager" :style "margin-top: 0px;"}
+   [:li {:class "previous"} [:a {:href "#" :style "margin-top: 1px;"} "← Previous"]]
+   [:li (submit "complete")]
+   [:li {:class "next"} [:a {:href "#" :style "margin-top: 5px;"} "Next →"]]])
+
+
 ;=============================== MODAL ===============================
 (def modal-in-page
   [:style ".header-login-trigger"
@@ -185,7 +227,7 @@
 
 
 (def footer
-  [:footer {:class "dark", :id "footer"}
+  [:footer {:class "dark", :id "footer", :style "margin-top: 20px;"}
    [:div {:class "container"}
     [:div {:class "footer-widgets-wrap clearfix"}
      [:div {:class "col_two_third"}

@@ -18,18 +18,6 @@
     header/fake-logo
     (header/navigation-plain header-menu header/notif)))
 
-
-;<body class="stretched side-header side-header-right open-header push-wrapper close-header-on-scroll">
-
-;<!-- Document Wrapper  ============================================= -->
-;<div id="wrapper" class="clearfix">
-;<div id="header-trigger"><i class="icon-line-menu"></i><i class="icon-line-cross"></i></div>
-;<!-- Header ============================================= -->
-;<header id="header" class="no-sticky">
-;<div id="header-wrap">
-;<div class="container clearfix">
-;<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
 (def directory
   [:div {:class "widget widget_links clearfix", :id "shortcodes"}
    [:h4 "Problems Directory"]
@@ -62,20 +50,6 @@
     [:div {:class "fluid-width-video-wrapper", :style "padding-top: 56.25%;"}
      [:iframe {:frameborder "0", :src "http://www.youtube.com/embed/SZEflIVnhH8", :id "fitvid264630"}]]]])
 
-
-(def social
-  [:div {:class "widget quick-contact-widget clearfix", :id "s-icons"}
-   [:a {:title "Facebook", :class "social-icon si-colored si-facebook", :href "#"}
-    [:i {:class "icon-facebook"}] [:i {:class "icon-facebook"}]]
-   [:a {:title "Twitter", :class "social-icon si-colored si-twitter", :href "#"}
-    [:i {:class "icon-twitter"}] [:i {:class "icon-twitter"}]]
-   [:a {:title "Github", :class "social-icon si-colored si-github", :href "#"}
-    [:i {:class "icon-github"}] [:i {:class "icon-github"}]]
-   [:a {:title "Google Plus", :class "social-icon si-colored si-gplus", :href "#"}
-    [:i {:class "icon-gplus"}] [:i {:class "icon-gplus"}]]
-   [:a {:title "Instagram", :class "social-icon si-colored si-instagram", :href "#"}
-    [:i {:class "icon-instagram"}] [:i {:class "icon-instagram"}]]])
-
 (def prob-title
   [:div {:class "container clearfix"}
    [:h3 {:style "margin-bottom: 5px;"} "Title of the Problem"]
@@ -101,13 +75,13 @@
 
 (defn problem
   ([image question option] [:div {:class "widget clearfix", :id "text", :style "margin-top: 0px;"}
-                            [:form {:class "col-md-12"}
+                            [:form {:class "col-md-12", :style "padding-left: 0px; padding-right: 0px;"}
                              [:div {:class "col-md-11"}
                               [:div {:class "col-md-5"} image]
                               [:div {:class "col-md-7"} question
                                [:div {:class "notopmargin nobottommargin", :role "form", :action "#"} option]]]
 
-                             [:div {:class "col-md-1"} [:br social]]
+                             [:div {:class "col-md-1"} [:br comp/social1]]
 
                              [:span {:class "input-group-btn topmargin center"}
                               [:button {:type "submit", :class "button button-small button-dark button-rounded", :style "margin-bottom: 15px;", :href "#"}
@@ -117,6 +91,19 @@
                               [:a {:class "button button-rounded button-3d button-large button-reveal button-large button-light button-bright-yellow", :style "margin-top: 0px;", :href "#"}
                                [:i {:class "icon-signal"}]
                                [:span "RECOMMENDED LEARNING"]]]]]))
+
+(defn problem2
+  ([image question option] [:div {:class "widget clearfix", :id "text", :style "margin-top: 0px;"}
+                            [:form {:class "col-md-12"}
+                             [:div {:class "content-wrap", :style "padding-top: 1px; padding-bottom: 0px;"}
+                              [:div {:class "entry-image"}
+                               [:div {:class "panel panel-default"}
+                                [:div {:class "panel-body" :style "padding: 10px 2px;"}
+                                 [:div {:class "col-md-5"} image]
+                                 [:div {:class "col-md-7"} question
+                                  [:div {:class "notopmargin nobottommargin", :role "form", :action "#"} option]]]]]]
+
+                             (comp/pages "complete")]]))
 
 (defn do-quiz
   ([] (hp/html5
@@ -167,6 +154,7 @@
 
 (defn scored-DP
   ([] (hp/html5
+
         [:html {:lang "en-US", :dir "ltr"}
          [:head
           (comp/font 2)
@@ -184,13 +172,32 @@
           (comp/has-side-panel rec-learning rec-learn directory)
 
           [:section {:id "content"}
-           [:div {:class "content-wrap", :style "padding-top: 20px; padding-bottom: 20px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
-            comp/sub-menu
+           [:div {:class "content-wrap", :style "padding-top: 7px; padding-bottom: 8px; margin-top: 25px;"}
 
-            (problem prob-image prob-question prob-option)]]]
 
-         "<!-- Footer Scripts\n\t============================================= -->" "\n\t"
+            [:div {:id "row"}
+             [:div {:class "col-md-12"}
+              [:div {:class "col-md-2 nobottommargin left" :style "padding-top: 3px; padding-left: 46px; padding-right: 0px;"}
+               comp/social2]
+
+              [:div {:class "col-md-8 nobottommargin" :style "padding-top: 5px; padding-left: 8px;"}
+               comp/progress]
+
+              [:div {:class "col-md-2 col_last nobottommargin" :style "padding-left: 0px;"}
+               [:a {:class "side-panel-trigger button button-rounded button-3d button-mini button-light button-white",
+                    :style "margin-top: 0px; font-size: 9px; height: 20px; line-height: 18px;", :href "#"}
+
+                [:span "RECOMMENDED LEARNING"]]]]]]]
+
+          [:section {:id "content"}
+           [:div {:class "content-wrap", :style "padding-top: 2px; padding-bottom: 5px;"}
+
+            [:div {:class "container clearfix"}
+             (problem2 prob-image prob-question prob-option)]]]]
+
+         "<!Footer Scripts>"
          [:script {:src "../js/functions.js", :type "text/javascript"}]])))
+
 
 (defn scored-DP2
   ([] (hp/html5
@@ -214,7 +221,7 @@
           (comp/has-side-panel rec-learning rec-learn directory)
 
           [:section {:id "content"}
-           [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"}                    ;[:div {:class "container clear-bottommargin clearfix"} [:div {:class "row clearfix"}]]
+           [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"}
 
             (problem prob-image prob-question prob-option)]]
 

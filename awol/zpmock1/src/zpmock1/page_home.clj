@@ -42,13 +42,25 @@
           [:div {:class "clearfix", :id "wrapper"}
            [:title "Profile | Zenius Prestasi"]
 
-           header
-
-           comp/page-title]
-
+           header]
 
           [:section {:id "content"}
-           [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"}]]
+           [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px; margin-top: 25px;"}
+
+
+            [:div {:id "row"}
+             [:div {:class "container clearfix"}
+              [:div {:class "col-md-2 nobottommargin left", :style "padding-top: 4px;"}
+               comp/social2]
+
+              [:div {:class "col-md-8 nobottommargin", :style "padding-top: 4px;"}
+               comp/progress]
+
+              [:div {:class "col-md-2 fright col_last nobottommargin"}
+               [:a {:class "button button-rounded button-3d button-mini button-light button-white",
+                    :style "margin-top: 0px; font-size: 9px; height: 20px; line-height: 18px;", :href "#"}
+
+                [:span "RECOMMENDED LEARNING"]]]]]]]
 
           comp/footer]
 
