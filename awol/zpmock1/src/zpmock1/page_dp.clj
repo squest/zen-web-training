@@ -71,7 +71,7 @@
    [:li [:a {:href "#"} "Blue"]]
    [:li [:a {:href "#"} "Yellow"]]
    [:li {:class "active"} [:a {:href "#"} "Black"]]
-   [:li [:a {:href "#"} "Sorry I'm colour blind"]]])
+   [:li [:a {:href "#"} "Colour? What colour?"]]])
 
 (defn problem
   ([image question option] [:div {:class "widget clearfix", :id "text", :style "margin-top: 0px;"}

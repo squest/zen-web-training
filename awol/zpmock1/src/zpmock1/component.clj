@@ -39,56 +39,6 @@
         [:script {:src "../js/plugins.js", :type "text/javascript"}]))
 
 
-
-;=============================== MODAL ===============================
-(def modal-in-page
-  [:style ".header-login-trigger"
-   "float: right              ;
-   width: 20px                ;
-   height: 20px               ;
-   line-height: 20px          ;
-   font-size: 20px            ;
-   text-align: center         ;
-   margin: 40px 0 40px 10px   ;
-   color: #222                ;
-   -webkit-transition: margin .4s ease        ;
-   -o-transition: margin .4s ease             ;
-   transition: margin .4s ease                ;}
-   .header-login-trigger:hover {color: #666 ;}
-   #header.sticky-header.header-login-trigger{margin: 20px 0 20px 10px ;}"])
-
-(defn has-modal [title & content]                                          ;in :body
-  [:div {:style "animation-duration: 1.5s; opacity: 1;"}
-   [:div.modal.fade.bs-submit-modal-lg
-    {:aria-hidden     "true"
-     :aria-labelledby "mySmallModalLabel"
-     :role            "dialog"
-     :tabindex        "-1"
-     :style           "display: none;"}
-    [:div.modal-dialog.modal-lg
-     [:div.modal-body
-      [:div.modal-content
-       [:div.modal-header
-        [:button.close
-         {:aria-hidden  "true"
-          :data-dismiss "modal"
-          :type         "button"}
-         "×"]
-        [:h4#myModalLabel.modal-title title]]
-       [:div.modal-body
-        content]]]]]])
-
-(def has-submit-done
-  (has-modal "Are you sure with your answers?"
-             [:p.nobottommargin {:style "margin-top: 20px;"} "Yes and I want to see my score"]
-             [:button {:type "submit" :class "button button button-leaf button-circle center" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit"]
-             [:li]
-             [:p.nobottommargin {:style "margin-top: 30px;"} "Not really, let me learn a bit more"]
-             [:button {:class "button button-rounded button-3d button-large button-reveal button-large button-light button-bright-yellow" :style "margin-top: 0px; margin-bottom: 50px;" :href "#"}
-              [:i {:class "icon-signal"}]
-              [:span "RECOMMENDED LEARNING"]]))
-
-
 ;=============================== SIDE PANEL ===============================
 
 (defn has-side-panel [& content]
@@ -132,6 +82,58 @@
      [:li [:a {:href "#"} "Browse Soal"]]]]])
 
 
+;=============================== MODAL ===============================
+(def modal-in-page
+  [:style ".header-login-trigger"
+   "float: right              ;
+   width: 20px                ;
+   height: 20px               ;
+   line-height: 20px          ;
+   font-size: 20px            ;
+   text-align: center         ;
+   margin: 40px 0 40px 10px   ;
+   color: #222                ;
+   -webkit-transition: margin .4s ease        ;
+   -o-transition: margin .4s ease             ;
+   transition: margin .4s ease                ;}
+   .header-login-trigger:hover {color: #666 ;}
+   #header.sticky-header.header-login-trigger{margin: 20px 0 20px 10px ;}"])
+
+(defn has-modal [title & content]                                          ;in :body
+  [:div {:style "animation-duration: 1.5s; opacity: 1;"}
+   [:div.modal.fade.bs-submit-modal-lg
+    {:aria-hidden     "true"
+     :aria-labelledby "mySmallModalLabel"
+     :role            "dialog"
+     :tabindex        "-1"
+     :style           "display: none;"}
+    [:div.modal-dialog.modal-lg
+     [:div.modal-body
+      [:div.modal-content
+       [:div.modal-header
+        [:button.close
+         {:aria-hidden  "true"
+          :data-dismiss "modal"
+          :type         "button"}
+         "×"]
+        [:h4#myModalLabel.modal-title title]]
+       [:div.modal-body
+        content]]]]]])
+
+(def has-submit-done
+  (has-modal "Are you sure with your answers?"
+             [:p.nobottommargin {:style "margin-top: 20px;"} "Yes and I want to see my score"]
+             [:button {:type "submit" :class "button button button-leaf button-circle center" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit"]
+
+             [:p.nobottommargin {:style "margin-top: 30px;"} "Not really, let me learn a bit more"]
+             [:button {:class "button button-rounded button-3d button-large button-reveal button-large button-light button-bright-yellow" :style "margin-top: 0px; margin-bottom: 50px;" :href "https://www.zenius.net/"}
+              [:i {:class "icon-signal"}]
+              [:span "RECOMMENDED LEARNING"]]))
+
+(def incomplete-submit
+  (has-modal "Incomplete answers"
+             [:p.nobottommargin {:style "margin-top: 20px; margin-bottom: 50px;"} "You have to make sure all questions are answered in order to see your score"]))
+
 
 ;=============================== PARTS ===============================
 (def social1
@@ -164,19 +166,19 @@
 
 (defn submit
   ([]
-   [:button {:type "submit" :class "button button button-leaf button-circle" :data-toggle "modal" :data-target ".bs-submit-modal-lg" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit answer"])
+   [:button {:type "submit" :class "button button button-leaf button-circle" :data-toggle "modal" :data-target ".bs-submit-modal-lg" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit answers"])
 
   ([status]
-   [:button {:type "submit" :class "button button-3d button-yellow button-light button-circle" :data-toggle "modal" :data-target ".bs-submit-modal-lg" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit answer"]
+   [:button {:type "submit" :class "button button-3d button-yellow button-light button-circle" :data-toggle "modal" :data-target ".bs-submit-modal-lg" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit answers"]
    [:button {:type "submit" :class "button button-3d button-yellow button-light button-circle" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"}
-             [:i {:class "icon-ok-right"}] "Submit answer"]))
+             [:i {:class "icon-ok-right"}] "Submit answers"]))
 
 (defn pages [status]
   [:ul {:class "pager" :style "margin-top: 0px;"}
    [:li {:class "previous"} [:a {:href "#" :style "margin-top: 1px;"} "← Previous"]]
    [:li (submit)]
    [:li {:class "next"} [:a {:href "#" :style "margin-top: 5px;"} "Next →"]]
-   has-submit-done])
+   incomplete-submit])
 
 
 
