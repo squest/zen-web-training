@@ -39,47 +39,6 @@
         [:script {:src "../js/plugins.js", :type "text/javascript"}]))
 
 
-;=============================== PARTS ===============================
-(def social1
-  [:div {:class "widget quick-contact-widget clearfix", :id "s-icons"}
-   [:a {:title "Facebook", :class "social-icon si-colored si-facebook", :href "#"}
-    [:i {:class "icon-facebook"}] [:i {:class "icon-facebook"}]]
-   [:a {:title "Twitter", :class "social-icon si-colored si-twitter", :href "#"}
-    [:i {:class "icon-twitter"}] [:i {:class "icon-twitter"}]]
-   [:a {:title "Github", :class "social-icon si-colored si-github", :href "#"}
-    [:i {:class "icon-github"}] [:i {:class "icon-github"}]]
-   [:a {:title "Google Plus", :class "social-icon si-colored si-gplus", :href "#"}
-    [:i {:class "icon-gplus"}] [:i {:class "icon-gplus"}]]
-   [:a {:title "Instagram", :class "social-icon si-colored si-instagram", :href "#"}
-    [:i {:class "icon-instagram"}] [:i {:class "icon-instagram"}]]])
-
-(def social2
-  [:div {:class "top-links" :style "font-size: 11px;"}
-   [:ul
-    [:li [:a {:href "#" :style "padding-right: 16px; padding-left: 16px;"} [:span {:class "ts-icon"}
-           [:i {:class "icon-facebook"}]]]]
-    [:li [:a {:href "#" :style "padding-right: 16px; padding-left: 16px;"} [:span {:class "ts-icon"}
-           [:i {:class "icon-twitter"}]]]]
-    [:li [:a {:href "#" :style "padding-right: 16px; padding-left: 16px;"} [:span {:class "ts-icon"}
-           [:i {:class "icon-instagram2"}]]]]]])
-
-(def progress
-  [:div {:class "progress" :style "height: 18px;"}
-   [:div {:style "width: 60%; font-size: 12px; line-height: 14px;", :aria-valuemax "100", :aria-valuemin "0", :aria-valuenow "60", :role "progressbar", :class "progress-bar"} "60%"]])
-
-
-(defn submit
-  ([] [:button {:type "submit", :class "button button button-leaf button-circle", :style "margin-bottom: 15px; margin-top: 0px;", :href "#"}
-       [:i {:class "icon-ok-right"}] "Submit answer"])
-  ([status] [:button {:type "submit", :class "button button-3d button-yellow button-light button-circle", :style "margin-bottom: 15px; margin-top: 0px;", :href "#"}
-             [:i {:class "icon-ok-right"}] "Submit answer"]))
-
-(defn pages [status]
-  [:ul {:class "pager" :style "margin-top: 0px;"}
-   [:li {:class "previous"} [:a {:href "#" :style "margin-top: 1px;"} "← Previous"]]
-   [:li (submit "complete")]
-   [:li {:class "next"} [:a {:href "#" :style "margin-top: 5px;"} "Next →"]]])
-
 
 ;=============================== MODAL ===============================
 (def modal-in-page
@@ -98,34 +57,44 @@
    .header-login-trigger:hover {color: #666 ;}
    #header.sticky-header.header-login-trigger{margin: 20px 0 20px 10px ;}"])
 
-(def modal-login                                          ;in :body
-  [:div {:class "content-wrap"}
-   [:div {:id "modal-login-form", :class "modal1 mfp-hide"}
-    [:div {:style "background-color: #FFF; max-width: 400px;", :class "block divcenter col-padding"}
-     [:h4 {:class "uppercase ls1"} "Login to your Account"]
-     [:form {:style "max-width: 300px;", :class "nobottommargin clearfix", :action "#"}
-      [:div {:class "col_full"}
-       [:label {:class "capitalize t600"} "Username or Email:"]
-       [:input {:type "email", :class "sm-form-control", :name "template-op-form-email", :id "template-op-form-email"}]]
-      [:div {:class "col_full"}
-       [:label {:class "capitalize t600"} "Password:"]
-       [:input {:type "password", :class "sm-form-control", :name "template-op-form-password", :id "template-op-form-password"}]]
-      [:div {:class "col_full nobottommargin"}
-       [:div {:class "row"}
-        [:div {:class "col-xs-6"}
-         [:button {:value "submit", :class "button button-rounded button-small button-dark nomargin", :type "submit"} "Login"]]
-        [:div {:class "col-xs-6"}
-         [:p {:class "nobottommargin tright"}
-          [:small {:class "t300"}
-           [:em [:a {:href "#"} "Forgot Password?"]]]]]]]]]]])
+(defn has-modal [title & content]                                          ;in :body
+  [:div {:style "animation-duration: 1.5s; opacity: 1;"}
+   [:div.modal.fade.bs-submit-modal-lg
+    {:aria-hidden     "true"
+     :aria-labelledby "mySmallModalLabel"
+     :role            "dialog"
+     :tabindex        "-1"
+     :style           "display: none;"}
+    [:div.modal-dialog.modal-lg
+     [:div.modal-body
+      [:div.modal-content
+       [:div.modal-header
+        [:button.close
+         {:aria-hidden  "true"
+          :data-dismiss "modal"
+          :type         "button"}
+         "×"]
+        [:h4#myModalLabel.modal-title title]]
+       [:div.modal-body
+        content]]]]]])
+
+(def has-submit-done
+  (has-modal "Are you sure with your answers?"
+             [:p.nobottommargin {:style "margin-top: 20px;"} "Yes and I want to see my score"]
+             [:button {:type "submit" :class "button button button-leaf button-circle center" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit"]
+             [:li]
+             [:p.nobottommargin {:style "margin-top: 30px;"} "Not really, let me learn a bit more"]
+             [:button {:class "button button-rounded button-3d button-large button-reveal button-large button-light button-bright-yellow" :style "margin-top: 0px; margin-bottom: 50px;" :href "#"}
+              [:i {:class "icon-signal"}]
+              [:span "RECOMMENDED LEARNING"]]))
 
 
 ;=============================== SIDE PANEL ===============================
 
 (defn has-side-panel [& content]
   (list [:div {:class "body-overlay"}]
-        [:div {:class " ", :id "side-panel"} ;class can be "dark"
-         [:div {:class "side-panel-trigger", :id "side-panel-trigger-close"}
+        [:div {:class " " :id "side-panel"} ;class can be "dark"
+         [:div {:class "side-panel-trigger" :id "side-panel-trigger-close"}
           [:a {:href "#"} [:i {:class "icon-line-cross"}]]]
          [:div {:class "side-panel-wrap"}
           content]]))
@@ -134,13 +103,13 @@
 (defn open-sider [name icon & button-style]
   [:section {:id "content"}
    [:div {:class "container"}
-    [:a {:class (str "button button-rounded side-panel-trigger button-reveal" " " (first button-style)), :href "#"}
+    [:a {:class (str "button button-rounded side-panel-trigger button-reveal" " " (first button-style)) :href "#"}
      [:i {:class icon}]
      [:span name]]]])
 
 ;=============================== SUB MENU ===============================
 (def sub-menu
-  [:div {:id "page-menu", :class "sticky-page-menu"}
+  [:div {:id "page-menu" :class "sticky-page-menu"}
    [:div {:id "page-menu-wrap"}
     [:div {:class "container clearfix"}
      [:row {:class "col-md-8"}
@@ -154,66 +123,96 @@
       [:i {:class "icon-reorder"}]]]]])
 
 (def page-title
-  [:section {:id "page-title", :style "padding-top: 20px; padding-bottom: 0px;"}
+  [:section {:id "page-title" :style "padding-top: 20px; padding-bottom: 0px;"}
    [:div {:class "container clearfix"}
     [:h3 {:style "margin-bottom: 5px;"} "Title of the Problem"]
     [:p {:style "margin-bottom: 20px;"} "Sub-bab atau materi dari soal"]
-    [:ol {:class "breadcrumb", :style "margin-bottom: 5px;"}
-     [:li [:a {:class "side-panel-trigger button-reveal" , :href "#"} "Rekomendasi Belajar"]]
+    [:ol {:class "breadcrumb" :style "margin-bottom: 5px;"}
+     [:li [:a {:class "side-panel-trigger button-reveal"  :href "#"} "Rekomendasi Belajar"]]
      [:li [:a {:href "#"} "Browse Soal"]]]]])
 
 
+
+;=============================== PARTS ===============================
+(def social1
+  [:div {:class "widget quick-contact-widget clearfix" :id "s-icons"}
+   [:a {:title "Facebook" :class "social-icon si-colored si-facebook" :href "#"}
+    [:i {:class "icon-facebook"}] [:i {:class "icon-facebook"}]]
+   [:a {:title "Twitter" :class "social-icon si-colored si-twitter" :href "#"}
+    [:i {:class "icon-twitter"}] [:i {:class "icon-twitter"}]]
+   [:a {:title "Github" :class "social-icon si-colored si-github" :href "#"}
+    [:i {:class "icon-github"}] [:i {:class "icon-github"}]]
+   [:a {:title "Google Plus" :class "social-icon si-colored si-gplus" :href "#"}
+    [:i {:class "icon-gplus"}] [:i {:class "icon-gplus"}]]
+   [:a {:title "Instagram" :class "social-icon si-colored si-instagram" :href "#"}
+    [:i {:class "icon-instagram"}] [:i {:class "icon-instagram"}]]])
+
+(def social2
+  [:div {:class "top-links" :style "font-size: 11px;"}
+   [:ul
+    [:li [:a {:href "#" :style "padding-right: 16px; padding-left: 16px;"} [:span {:class "ts-icon"}
+                                                                            [:i {:class "icon-facebook"}]]]]
+    [:li [:a {:href "#" :style "padding-right: 16px; padding-left: 16px;"} [:span {:class "ts-icon"}
+                                                                            [:i {:class "icon-twitter"}]]]]
+    [:li [:a {:href "#" :style "padding-right: 16px; padding-left: 16px;"} [:span {:class "ts-icon"}
+                                                                            [:i {:class "icon-instagram2"}]]]]]])
+
+(def progress
+  [:div {:class "progress" :style "height: 18px;"}
+   [:div {:style "width: 60%; font-size: 12px; line-height: 14px;" :aria-valuemax "100" :aria-valuemin "0" :aria-valuenow "60" :role "progressbar" :class "progress-bar"} "60%"]])
+
+
+(defn submit
+  ([]
+   [:button {:type "submit" :class "button button button-leaf button-circle" :data-toggle "modal" :data-target ".bs-submit-modal-lg" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit answer"])
+
+  ([status]
+   [:button {:type "submit" :class "button button-3d button-yellow button-light button-circle" :data-toggle "modal" :data-target ".bs-submit-modal-lg" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit answer"]
+   [:button {:type "submit" :class "button button-3d button-yellow button-light button-circle" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"}
+             [:i {:class "icon-ok-right"}] "Submit answer"]))
+
+(defn pages [status]
+  [:ul {:class "pager" :style "margin-top: 0px;"}
+   [:li {:class "previous"} [:a {:href "#" :style "margin-top: 1px;"} "← Previous"]]
+   [:li (submit)]
+   [:li {:class "next"} [:a {:href "#" :style "margin-top: 5px;"} "Next →"]]
+   has-submit-done])
+
+
+
+
 ;=============================== TABS ===============================
-(defn side-tab [prob]
-  [:div {:id "tab-4", :class "tabs tabs-alt tabs-tb clearfix ui-tabs ui-widget ui-widget-content ui-corner-all"}
-   [:ul {:class "tab-nav clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all", :role "tablist"}
-    [:li {:class "ui-state-default ui-corner-top ui-tabs-active ui-state-active", :role "tab", :tabindex "0", :aria-controls "tabs-13", :aria-labelledby "ui-id-29", :aria-selected "true"}
-     [:a {:href "#tabs-13", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-29"}
-      [:i {:class "icon-home2"}] " Start here"]]
-    [:li {:class "ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-14", :aria-labelledby "ui-id-30", :aria-selected "false"}
-     [:a {:href "#tabs-14", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-30"} "Nunc tincidunt"]]
-    [:li {:class "ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-15", :aria-labelledby "ui-id-31", :aria-selected "false"}
-     [:a {:href "#tabs-15", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-31"} "Proin dolor"]]
-    [:li {:class "hidden-phone ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-16", :aria-labelledby "ui-id-32", :aria-selected "false"}
-     [:a {:href "#tabs-16", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-32"} "Aenean lacinia"]]]
-
-   [:div {:class "tab-container"}
-    [:div {:id "tabs-13", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-29", :role "tabpanel", :aria-expanded "true", :aria-hidden "false"} prob]
-    [:div {:id "tabs-14", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-30", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"} prob]
-    [:div {:id "tabs-15", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-31", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"} prob]
-    [:div {:id "tabs-16", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-32", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"} prob]]])
-
 (defn tabs [content]
-  [:div {:id "tab-4", :class "tabs tabs-alt tabs-tb  clearfix ui-tabs ui-widget ui-widget-content ui-corner-all"}
-   [:ul {:class "tab-nav clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all", :role "tablist"}
-    [:li {:class "ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-15", :aria-labelledby "ui-id-31", :aria-selected "false"}
-     [:a {:href "#tabs-15", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-31"} "Soal 1"]]
-    [:li {:class "ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-15", :aria-labelledby "ui-id-31", :aria-selected "false"}
-     [:a {:href "#tabs-15", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-31"} "Soal 2"]]
-    [:li {:class "ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-15", :aria-labelledby "ui-id-31", :aria-selected "false"}
-     [:a {:href "#tabs-15", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-31"} "Soal 3"]]]
+  [:div {:id "tab-4" :class "tabs tabs-alt tabs-tb  clearfix ui-tabs ui-widget ui-widget-content ui-corner-all"}
+   [:ul {:class "tab-nav clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" :role "tablist"}
+    [:li {:class "ui-state-default ui-corner-top" :role "tab" :tabindex "-1" :aria-controls "tabs-15" :aria-labelledby "ui-id-31" :aria-selected "false"}
+     [:a {:href "#tabs-15" :class "ui-tabs-anchor" :role "presentation" :tabindex "-1" :id "ui-id-31"} "Soal 1"]]
+    [:li {:class "ui-state-default ui-corner-top" :role "tab" :tabindex "-1" :aria-controls "tabs-15" :aria-labelledby "ui-id-31" :aria-selected "false"}
+     [:a {:href "#tabs-15" :class "ui-tabs-anchor" :role "presentation" :tabindex "-1" :id "ui-id-31"} "Soal 2"]]
+    [:li {:class "ui-state-default ui-corner-top" :role "tab" :tabindex "-1" :aria-controls "tabs-15" :aria-labelledby "ui-id-31" :aria-selected "false"}
+     [:a {:href "#tabs-15" :class "ui-tabs-anchor" :role "presentation" :tabindex "-1" :id "ui-id-31"} "Soal 3"]]]
 
    [:div {:class "tab-container"}
-    [:div {:id "tabs-15", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-31", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"}
+    [:div {:id "tabs-15" :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" :aria-labelledby "ui-id-31" :role "tabpanel" :style "display: none;" :aria-expanded "false" :aria-hidden "true"}
      content]
-    [:div {:id "tabs-15", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-31", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"}
+    [:div {:id "tabs-15" :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" :aria-labelledby "ui-id-31" :role "tabpanel" :style "display: none;" :aria-expanded "false" :aria-hidden "true"}
      content]
-    [:div {:id "tabs-15", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-31", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"}
+    [:div {:id "tabs-15" :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" :aria-labelledby "ui-id-31" :role "tabpanel" :style "display: none;" :aria-expanded "false" :aria-hidden "true"}
      content]]]
-  ;(#(vector [:a {:href (str "#tabs-" %), :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id (str "ui-id-" %)}] (str "Soal " %)) (inc 0))
+  ;(#(vector [:a {:href (str "#tabs-" %) :class "ui-tabs-anchor" :role "presentation" :tabindex "-1" :id (str "ui-id-" %)}] (str "Soal " %)) (inc 0))
   )
 
-(def tabnew [:div {:id "tab-8", :class "tabs tabs-alt tabs-tb clearfix ui-tabs ui-widget ui-widget-content ui-corner-all"} "\n\n\t\t\t\t\t\t\t"
-             [:ul {:class "tab-nav clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all", :role "tablist"} "\n\t\t\t\t\t\t\t\t"
-              [:li {:class "ui-state-default ui-corner-top ui-tabs-active ui-state-active", :role "tab", :tabindex "0", :aria-controls "tabs-29", :aria-labelledby "ui-id-13", :aria-selected "true"}
-               [:a {:href "#tabs-29", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-13"}
+(def tabnew [:div {:id "tab-8" :class "tabs tabs-alt tabs-tb clearfix ui-tabs ui-widget ui-widget-content ui-corner-all"} "\n\n\t\t\t\t\t\t\t"
+             [:ul {:class "tab-nav clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" :role "tablist"} "\n\t\t\t\t\t\t\t\t"
+              [:li {:class "ui-state-default ui-corner-top ui-tabs-active ui-state-active" :role "tab" :tabindex "0" :aria-controls "tabs-29" :aria-labelledby "ui-id-13" :aria-selected "true"}
+               [:a {:href "#tabs-29" :class "ui-tabs-anchor" :role "presentation" :tabindex "-1" :id "ui-id-13"}
                 [:i {:class "icon-home2 norightmargin"}]]] "\n\t\t\t\t\t\t\t\t"
-              [:li {:class "ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-30", :aria-labelledby "ui-id-14", :aria-selected "false"}
-               [:a {:href "#tabs-30", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-14"} "Nunc tincidunt"]] "\n\t\t\t\t\t\t\t\t"
-              [:li {:class "ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-31", :aria-labelledby "ui-id-15", :aria-selected "false"}
-               [:a {:href "#tabs-31", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-15"} "Proin dolor"]] "\n\t\t\t\t\t\t\t\t"
-              [:li {:class "hidden-phone ui-state-default ui-corner-top", :role "tab", :tabindex "-1", :aria-controls "tabs-32", :aria-labelledby "ui-id-16", :aria-selected "false"}
-               [:a {:href "#tabs-32", :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-16"} "Aenean lacinia"]] "\n\t\t\t\t\t\t\t"] "\n\n\t\t\t\t\t\t\t"
+              [:li {:class "ui-state-default ui-corner-top" :role "tab" :tabindex "-1" :aria-controls "tabs-30" :aria-labelledby "ui-id-14" :aria-selected "false"}
+               [:a {:href "#tabs-30" :class "ui-tabs-anchor" :role "presentation" :tabindex "-1" :id "ui-id-14"} "Nunc tincidunt"]] "\n\t\t\t\t\t\t\t\t"
+              [:li {:class "ui-state-default ui-corner-top" :role "tab" :tabindex "-1" :aria-controls "tabs-31" :aria-labelledby "ui-id-15" :aria-selected "false"}
+               [:a {:href "#tabs-31" :class "ui-tabs-anchor" :role "presentation" :tabindex "-1" :id "ui-id-15"} "Proin dolor"]] "\n\t\t\t\t\t\t\t\t"
+              [:li {:class "hidden-phone ui-state-default ui-corner-top" :role "tab" :tabindex "-1" :aria-controls "tabs-32" :aria-labelledby "ui-id-16" :aria-selected "false"}
+               [:a {:href "#tabs-32" :class "ui-tabs-anchor", :role "presentation", :tabindex "-1", :id "ui-id-16"} "Aenean lacinia"]] "\n\t\t\t\t\t\t\t"] "\n\n\t\t\t\t\t\t\t"
              [:div {:class "tab-container"} "\n\n\t\t\t\t\t\t\t\t"
               [:div {:id "tabs-29", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-13", :role "tabpanel", :aria-expanded "true", :aria-hidden "false"} "\n\t\t\t\t\t\t\t\t\tProin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.\n\t\t\t\t\t\t\t\t"] "\n\t\t\t\t\t\t\t\t"
               [:div {:id "tabs-30", :class "tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom", :aria-labelledby "ui-id-14", :role "tabpanel", :style "display: none;", :aria-expanded "false", :aria-hidden "true"} "\n\t\t\t\t\t\t\t\t\tMorbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.\n\t\t\t\t\t\t\t\t"] "\n\t\t\t\t\t\t\t\t"
@@ -224,10 +223,8 @@
 
 
 ;=============================== FOOTER ===============================
-
-
 (def footer
-  [:footer {:class "dark", :id "footer", :style "margin-top: 20px;"}
+  [:footer {:class "dark", :id "footer", :style "margin-top: 0px;"}
    [:div {:class "container"}
     [:div {:class "footer-widgets-wrap clearfix"}
      [:div {:class "col_two_third"}

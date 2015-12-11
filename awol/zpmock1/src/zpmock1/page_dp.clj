@@ -94,16 +94,15 @@
 
 (defn problem2
   ([image question option] [:div {:class "widget clearfix", :id "text", :style "margin-top: 0px;"}
-                            [:form {:class "col-md-12"}
+                            [:form {:class "col-md-12" :style "margin-bottom: 0px;"}
                              [:div {:class "content-wrap", :style "padding-top: 1px; padding-bottom: 0px;"}
                               [:div {:class "entry-image"}
                                [:div {:class "panel panel-default"}
                                 [:div {:class "panel-body" :style "padding: 10px 2px;"}
                                  [:div {:class "col-md-5"} image]
                                  [:div {:class "col-md-7"} question
-                                  [:div {:class "notopmargin nobottommargin", :role "form", :action "#"} option]]]]]]
-
-                             (comp/pages "complete")]]))
+                                  [:div {:class "notopmargin nobottommargin", :role "form", :action "#"} option]]]]]]]
+                            (comp/pages "complete")]))
 
 (defn do-quiz
   ([] (hp/html5
@@ -194,6 +193,7 @@
 
             [:div {:class "container clearfix"}
              (problem2 prob-image prob-question prob-option)]]]]
+
 
          "<!Footer Scripts>"
          [:script {:src "../js/functions.js", :type "text/javascript"}]])))
