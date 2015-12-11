@@ -169,16 +169,16 @@
    [:button {:type "submit" :class "button button button-leaf button-circle" :data-toggle "modal" :data-target ".bs-submit-modal-lg" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit answers"])
 
   ([status]
-   [:button {:type "submit" :class "button button-3d button-yellow button-light button-circle" :data-toggle "modal" :data-target ".bs-submit-modal-lg" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit answers"]
-   [:button {:type "submit" :class "button button-3d button-yellow button-light button-circle" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"}
-             [:i {:class "icon-ok-right"}] "Submit answers"]))
+   [:button {:type "submit" :class "button button-3d button-yellow button-light button-circle" :data-toggle "modal" :data-target ".bs-submit-modal-lg" :style "margin-bottom: 15px; margin-top: 0px;" :href "#"} "Submit answers"]))
 
 (defn pages [status]
-  [:ul {:class "pager" :style "margin-top: 0px;"}
-   [:li {:class "previous"} [:a {:href "#" :style "margin-top: 1px;"} "← Previous"]]
-   [:li (submit)]
-   [:li {:class "next"} [:a {:href "#" :style "margin-top: 5px;"} "Next →"]]
-   incomplete-submit])
+  (let [submit-button (if (= status "complete") (submit "complete") (submit))
+        submit-modal (if (= status "complete") has-submit-done incomplete-submit)]
+    [:ul {:class "pager" :style "margin-top: 0px;"}
+     [:li {:class "previous"} [:a {:href "#" :style "margin-top: 1px;"} "← Previous"]]
+     [:li submit-button]
+     [:li {:class "next"} [:a {:href "#" :style "margin-top: 5px;"} "Next →"]]
+     submit-modal]))
 
 
 
