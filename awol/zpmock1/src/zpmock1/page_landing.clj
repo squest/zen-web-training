@@ -11,7 +11,7 @@
 
 (def header
   (header/container-light
-    header/ZP-logo
+    header/logo4
     (header/navigation-modern header-menu) "transparent-header dark"))
 
 (def section-CTArankprogress

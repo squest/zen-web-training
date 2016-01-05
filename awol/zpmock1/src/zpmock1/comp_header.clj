@@ -18,6 +18,10 @@
 (def ZP-logo (logo-header "images/ZPlogo.png" "images/ZPlogo@2x.png"))
 (def ZP-short (logo-header "images/ZPshort.png"))
 (def fake-logo (logo-header "images/performance.png"))
+(def logo1 (logo-header "images/1A.png"))
+(def logo2 (logo-header "images/1B.png"))
+(def logo3 (logo-header "images/4A.png"))
+(def logo4 (logo-header "images/4B.png"))
 (def logo
   [:div {:id "logo"}
    [:a {:data-dark-logo "images/logo-dark.png", :class "standard-logo", :href "index.html"}

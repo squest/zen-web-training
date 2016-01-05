@@ -15,7 +15,7 @@
 
 (def header
   (header/container-light
-    header/fake-logo
+    header/logo4
     (header/navigation-plain header-menu header/notif)))
 
 (def directory
@@ -164,6 +164,37 @@
          [:body {:class "stretched side-panel-left"}
 
           [:div {:class "clearfix", :id "wrapper"}
+           [:title "Scored DP 2 | Zenius Prestasi"]
+
+           header]
+
+          [:div comp/page-title]
+
+          (comp/has-side-panel rec-learning rec-learn directory)
+
+          [:section {:id "content"}
+           [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"}
+
+            (problem prob-image prob-question prob-option)]]
+
+          comp/footer]
+
+         "<!Footer Scripts>"
+         [:script {:src "../js/functions.js", :type "text/javascript"}]])))
+
+(defn scored-DP2
+  ([] (hp/html5
+
+        [:html {:lang "en-US", :dir "ltr"}
+         [:head
+          (comp/font 2)
+          comp/links
+          comp/style
+          comp/javascript]
+
+         [:body {:class "stretched side-panel-left"}
+
+          [:div {:class "clearfix", :id "wrapper"}
            [:title "Scored DP | Zenius Prestasi"]
 
            header]
@@ -198,35 +229,4 @@
          "<!Footer Scripts>"
          [:script {:src "../js/functions.js", :type "text/javascript"}]])))
 
-
-(defn scored-DP2
-  ([] (hp/html5
-
-        [:html {:lang "en-US", :dir "ltr"}
-         [:head
-          (comp/font 2)
-          comp/links
-          comp/style
-          comp/javascript]
-
-         [:body {:class "stretched side-panel-left"}
-
-          [:div {:class "clearfix", :id "wrapper"}
-           [:title "Scored DP 2 | Zenius Prestasi"]
-
-           header]
-
-          [:div comp/page-title]
-
-          (comp/has-side-panel rec-learning rec-learn directory)
-
-          [:section {:id "content"}
-           [:div {:class "content-wrap", :style "padding-top: 10px; padding-bottom: 5px;"}
-
-            (problem prob-image prob-question prob-option)]]
-
-          comp/footer]
-
-         "<!Footer Scripts>"
-         [:script {:src "../js/functions.js", :type "text/javascript"}]])))
 
